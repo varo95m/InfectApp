@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="subTitleMainBig">
+        <item name="android:textSize">@dimen/letter_big</item>
+    </style>
+
+</resources>

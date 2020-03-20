@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'com.google.gms.google-services'
+
+def cfg = rootProject.ext.configuration
+
+
+android {
+    compileSdkVersion cfg.compileVersion
+    buildToolsVersion cfg.buildToolsVersion
+    defaultConfig {
+        applicationId 'com.infectapp'
+        minSdkVersion cfg.minSdk
+        targetSdkVersion cfg.targetSdk
+        versionCode cfg.version_code
+        versionName cfg.version_name
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+
+
+    flavorDimensions 'environment'
+
+    productFlavors {
+        mock {
+            dimension 'environment'
+            buildConfigField 'Boolean', 'PORTRAIT_ORIENTATION', 'false'
+            buildConfigField 'Boolean', 'PORTRAIT_ORIENTATION', 'false'
+        }
+    }
+
+    lintOptions {
+        lintConfig rootProject.file('gradle/lint.xml')
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+}
+
+dependencies {
+
+    implementation project(':domain')
+    implementation project(':data')
+
+    implementation 'com.github.carlosmateo89.Ema:ema-android:2.3.0'
+}
+
+repositories {
+    mavenCentral()
+}

@@ -1,0 +1,86 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply from: '../buildsystem/dependencies.gradle'
+apply plugin: 'kotlin-android-extensions'
+
+
+def cfg = rootProject.ext.configuration
+
+android {
+    compileSdkVersion cfg.compileVersion
+    buildToolsVersion cfg.buildToolsVersion
+
+    // Values from keystore.properties file
+
+    defaultConfig {
+        minSdkVersion cfg.minSdk
+        targetSdkVersion cfg.targetSdk
+        versionCode cfg.version_code
+        versionName cfg.version_name
+    }
+
+    publishNonDefault true
+
+    flavorDimensions  'environment'
+
+    productFlavors {
+        mock {
+            dimension 'environment'
+            buildConfigField 'String', 'DB_NAME', '"MockDatabase"'
+            buildConfigField 'String', 'URL_APP', '"https://www.infectapp.com"'
+            buildConfigField 'Boolean', 'IGNORE_SECURE_HTTP', 'true'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+
+dependencies {
+    def dataDependencies = rootProject.ext.dataDependencies
+
+    implementation project(':domain')
+
+    implementation dataDependencies.gson
+
+    //UI
+    implementation dataDependencies.constraint
+
+    //Workaround because not recognize AndroidX
+    implementation dataDependencies.support
+    implementation dataDependencies.material
+    implementation dataDependencies.kotlin
+
+    //Kodein
+    implementation dataDependencies.kodein
+    implementation dataDependencies.kodeinAndroid
+
+    implementation dataDependencies.okHttpLogginInterceptor
+
+    //EMA
+    implementation 'com.github.carlosmateo89.Ema:ema-core:2.3.0'
+    implementation 'com.google.firebase:firebase-auth:19.3.0'
+    implementation 'com.google.firebase:firebase-firestore:21.4.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}

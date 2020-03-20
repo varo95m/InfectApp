@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="max_edit_form">50</integer>
+    <integer name="max_user_length">40</integer>
+    <integer name="max_password_length">20</integer>
+    <integer name="max_carplate_length">7</integer>
+    <integer name="anim_short">200</integer>
+    <integer name="anim_medium">300</integer>
+    <integer name="anim_large">600</integer>
+</resources>

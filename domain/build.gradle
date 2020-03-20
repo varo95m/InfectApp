@@ -1,0 +1,17 @@
+apply plugin: 'kotlin'
+configurations {
+    provided
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
+
+dependencies {
+    def domainDependencies = rootProject.ext.domainDependencies
+    api domainDependencies.kotlin
+    api domainDependencies.coroutines
+    implementation 'com.github.carlosmateo89.Ema:ema-core:2.3.0'
+}
