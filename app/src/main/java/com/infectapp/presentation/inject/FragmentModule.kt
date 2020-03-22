@@ -1,11 +1,10 @@
-package com.infectapp.presentation
+package com.infectapp.presentation.inject
 
 import androidx.fragment.app.Fragment
 import com.carmabs.ema.core.concurrency.AsyncManager
 import com.carmabs.ema.core.concurrency.DefaultAsyncManager
 import com.infectapp.presentation.ui.main.MainViewModel
 import com.infectapp.presentation.ui.main.home.HomeViewModel
-import com.infectapp.presentation.ui.main.login.LoginViewModel
 import com.infectapp.presentation.ui.main.news.NewsViewModel
 import com.infectapp.presentation.ui.main.ranking.RankingViewModel
 import com.infectapp.presentation.ui.main.register.email.RegisterEmailViewModel
@@ -35,9 +34,9 @@ fun generateFragmentModule(fragment: Fragment) = Kodein.Module(name = "FragmentM
 
     bind<SplashViewModel>() with provider { SplashViewModel() }
 
-    bind<LoginViewModel>() with provider { LoginViewModel(instance()) }
+//    bind<LoginViewModel>() with provider { LoginViewModel(instance()) }
 
-    bind<MainViewModel>() with provider { MainViewModel() }
+    bind<MainViewModel>() with provider { MainViewModel(instance()) }
 
     bind<HomeViewModel>() with provider { HomeViewModel() }
 

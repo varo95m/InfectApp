@@ -30,7 +30,6 @@ class SplashNavigator(override val navController: NavController,private val acti
     }
 
     private fun toLoginFromSplash() {
-        navigateWithAction(R.id.action_splashViewFragment_to_loginViewActivity
-        )
+        navigateWithAction(R.id.action_splashViewFragment_to_graphMain)
     }
 }

@@ -1,6 +1,7 @@
 package com.infectapp.presentation.ui.main
 
 import com.carmabs.ema.core.state.EmaBaseState
+import com.infectapp.domain.model.InfectedUserModel
 
 
 /**
@@ -10,7 +11,10 @@ import com.carmabs.ema.core.state.EmaBaseState
  */
 
 data class MainState(
-    val default : Boolean = false
+    var totalUsersList: List<InfectedUserModel>? = null,
+    var podiumUsersList: List<InfectedUserModel>? = null,
+    var otherUsersList: List<InfectedUserModel>? = null,
+    var userLogged : InfectedUserModel? = null
 ) : EmaBaseState {
 
 }

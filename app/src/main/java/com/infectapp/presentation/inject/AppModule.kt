@@ -5,8 +5,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.provider.UserDictionary.Words.APP_ID
+import com.infectapp.data.repository.MockRepository
+import com.infectapp.domain.repository.Repository
+import com.infectapp.domain.usecase.GetInfectedListUseCase
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
+import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
 
 
@@ -27,8 +31,16 @@ fun generateAppModule(app: Application) = Kodein.Module(name = "AppModule") {
 
     bind<Resources>() with singleton { app.resources }
 
+//   bind<Repository>() with singleton { ApiMrRepository() }
+
+    bind<Repository>() with singleton { MockRepository() }
+
 
     bind<SharedPreferences>() with singleton { app.getSharedPreferences(APP_ID, Context.MODE_PRIVATE) }
+
+
+
+    bind<GetInfectedListUseCase>() with singleton { GetInfectedListUseCase(instance()) }
 
 
 }

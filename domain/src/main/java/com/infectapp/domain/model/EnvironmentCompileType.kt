@@ -12,5 +12,6 @@ package com.infectapp.domain.model
 
 enum class EnvironmentCompileType {
     MOCK,
+    PRE,
     LOCAL
 }

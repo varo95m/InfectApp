@@ -10,11 +10,8 @@
         android:name="com.infectapp.presentation.ui.splash.SplashViewFragment"
         android:label="HomeViewFragment">
         <action
-            android:id="@+id/action_splashViewFragment_to_loginViewActivity"
-            app:destination="@id/loginViewActivity" />
+            android:id="@+id/action_splashViewFragment_to_graphMain"
+            app:destination="@id/graphMain" />
     </fragment>
-    <activity
-        android:id="@+id/loginViewActivity"
-        android:name="com.infectapp.presentation.ui.main.login.LoginViewActivity"
-        android:label="LoginViewActivity" />
+    <include app:graph="@navigation/navigation_main" />
 </navigation>

@@ -3,6 +3,7 @@ package com.infectapp.data.repository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
+import com.infectapp.domain.model.InfectedUserModel
 import com.infectapp.data.COLLECTION_USERS
 import com.infectapp.data.FIELD_USER
 import com.infectapp.domain.INT_ZERO
@@ -72,4 +73,7 @@ class ApiMrRepository : Repository {
         }
     }
 
+    override suspend fun getInfectedList() : List<InfectedUserModel> {
+        return listOf() //.toDomainModel()
+    }
 }
