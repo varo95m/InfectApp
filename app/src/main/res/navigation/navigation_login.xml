@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graphMain"
+    app:startDestination="@id/loginViewFragment">
+    <fragment
+        android:id="@+id/loginViewFragment"
+        android:name="com.infectapp.presentation.ui.main.login.LoginViewFragment"
+        android:label="LoginViewFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginViewFragment_to_registerStartViewFragment"
+            app:destination="@id/Register" />
+    </fragment>
+    <navigation
+        android:id="@+id/Register"
+        app:startDestination="@id/registerStartViewFragment" >
+        <fragment
+            android:id="@+id/registerStartViewFragment"
+            android:name="com.infectapp.presentation.ui.main.register.start.RegisterStartViewFragment"
+            tools:layout="@layout/fragment_register_start">
+            <action
+                android:id="@+id/action_registerStartViewFragment_to_registerEmailViewFragment"
+                app:destination="@id/registerEmailViewFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/registerEmailViewFragment"
+            android:name="com.infectapp.presentation.ui.main.register.email.RegisterEmailViewFragment"
+            tools:layout="@layout/fragment_register_email" >
+            <action
+                android:id="@+id/action_registerEmailViewFragment_to_registerPasswordViewFragment"
+                app:destination="@id/registerPasswordViewFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/registerUsernameViewFragment"
+            android:name="com.infectapp.presentation.ui.main.register.username.RegisterUsernameViewFragment"
+            tools:layout="@layout/fragment_register_username" />
+        <fragment
+            android:id="@+id/registerPasswordViewFragment"
+            android:name="com.infectapp.presentation.ui.main.register.password.RegisterPasswordViewFragment"
+            tools:layout="@layout/fragment_register_password" >
+            <action
+                android:id="@+id/action_registerPasswordViewFragment_to_registerUsernameViewFragment"
+                app:destination="@id/registerUsernameViewFragment" />
+        </fragment>
+    </navigation>
+</navigation>

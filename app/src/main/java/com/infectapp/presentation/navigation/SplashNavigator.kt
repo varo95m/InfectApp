@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.navigation.NavController
 import com.carmabs.ema.core.navigator.EmaBaseNavigator
 import com.carmabs.ema.core.navigator.EmaNavigationState
+import com.infectapp.R
 import com.infectapp.presentation.base.BaseNavigator
 
 /**
@@ -29,7 +30,7 @@ class SplashNavigator(override val navController: NavController,private val acti
     }
 
     private fun toLoginFromSplash() {
-        navigateWithAction(R.id.action_splashViewFragment_to_graphLogin)
+        navigateWithAction(R.id.action_splashViewFragment_to_loginViewActivity
+        )
     }
-
 }
