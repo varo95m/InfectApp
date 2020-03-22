@@ -2,4 +2,9 @@
     <!-- commons -->
     <string name="facebook_app_id">1075773502772292</string>
     <string name="fb_login_protocol_scheme">fb1075773502772292</string>
+
+
+
+    <string name="home_has_infected_users">%s de %s usuarios</string>
+    <string name="home_has_infected_percentage">%s% del total</string>
 </resources>

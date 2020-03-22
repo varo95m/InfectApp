@@ -1,4 +1,4 @@
-package com.infectapp.presentation.ui.main.map
+package com.infectapp.presentation.ui.main.ranking
 
 import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.R
@@ -6,23 +6,23 @@ import com.infectapp.presentation.base.BaseFragment
 import com.infectapp.presentation.navigation.MainNavigator
 import org.kodein.di.generic.instance
 
-class MapViewFragment : BaseFragment<MapState, MapViewModel, MainNavigator.Navigation>() {
+class RankingViewFragment : BaseFragment<RankingState, RankingViewModel, MainNavigator.Navigation>() {
 
-    override val viewModelSeed: MapViewModel by instance()
+    override val viewModelSeed: RankingViewModel by instance()
 
     override val navigator: MainNavigator by instance()
 
-    private var vm: MapViewModel? = null
+    private var vm: RankingViewModel? = null
 
-    override val layoutId: Int get() = R.layout.fragment_news
+    override val layoutId: Int get() = R.layout.fragment_ranking
 
 
-    override fun onInitialized(viewModel: MapViewModel) {
+    override fun onInitialized(viewModel: RankingViewModel) {
         vm = viewModel
     }
 
 
-    override fun onNormal(data: MapState) {
+    override fun onNormal(data: RankingState) {
     }
 
 
@@ -39,7 +39,7 @@ class MapViewFragment : BaseFragment<MapState, MapViewModel, MainNavigator.Navig
     }
 
     companion object{
-        fun newInstance(): MapViewFragment = MapViewFragment()
+        fun newInstance(): RankingViewFragment = RankingViewFragment()
     }
 
 }

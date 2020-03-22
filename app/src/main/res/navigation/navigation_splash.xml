@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graphSplash"
     app:startDestination="@id/splashViewFragment">
 
     <fragment
         android:id="@+id/splashViewFragment"
         android:name="com.infectapp.presentation.ui.splash.SplashViewFragment"
-        android:label="HomeViewFragment"/>
+        android:label="SplasViewFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashViewFragment_to_graphLogin"
+            app:destination="@id/graphLogin" />
+    </fragment>
+    <include app:graph="@navigation/navigation_login" />
 </navigation>
