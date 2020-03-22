@@ -62,11 +62,15 @@ abstract class BaseFragment<S : EmaBaseState, VM : BaseViewModel<S, NS>, NS : Em
      * We create this abstract function if we want to appy default behaviours in [onStateNormal],[onStateError],[onStateLoading]
      * @param data
      */
-    abstract fun onLoading(data: EmaExtraData)
+    abstract fun onAlternative(data: EmaExtraData)
 
     abstract fun onNormal(data: S)
 
     abstract fun onError(error: Throwable): Boolean
+
+    override fun onStateAlternative(data: EmaExtraData) {
+        onAlternative(data)
+    }
 
     protected fun View.setOnClickListenerForNavigation(defaultClickIntervalMillis: Long = DEFAULT_CLICK_LISTENER_THRESHOLD, function: (View) -> Unit) {
         setOnClickListener {

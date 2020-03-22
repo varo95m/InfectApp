@@ -12,40 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <fragment
-        android:id="@+id/navHostFragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+
+    <FrameLayout
+        android:id="@+id/fl_main_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_below="@id/emaAppBarLayout"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@+id/clTabbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emaAppBarLayout" />
-
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/clTabbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <com.infectapp.presentation.widget.TabbarWidget
-            android:id="@+id/layoutHomeTabbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            app:behavior_hideable="false"
-            app:behavior_peekHeight="80dp"
-            app:layout_behavior="com.infectapp.presentation.widget.CustomBottomBehaviour">
 
-        </com.infectapp.presentation.widget.TabbarWidget>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btv_main"
+        style="@style/BottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:menu="@menu/bottom_menu"
+        app:labelVisibilityMode="selected"
+        app:layout_constraintTop_toBottomOf="@+id/fl_main_fragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

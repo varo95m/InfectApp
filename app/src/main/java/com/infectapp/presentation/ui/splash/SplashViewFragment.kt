@@ -24,14 +24,22 @@ class SplashViewFragment : BaseFragment<SplashState, SplashViewModel, SplashNavi
 
     override val layoutId: Int = R.layout.fragment_splash
 
-    override fun onInitialized(viewModel: SplashViewModel) {
+    private var vm: SplashViewModel? = null
 
+    override fun onInitialized(viewModel: SplashViewModel) {
+        vm = viewModel
+        showSplash()
+    }
+
+    private fun showSplash() {
+        vm?.showSplashAndNavigate()
     }
 
     override fun onNormal(data: SplashState) {
     }
 
-    override fun onLoading(data: EmaExtraData) {
+    override fun onAlternative(data: EmaExtraData) {
+
     }
 
     override fun onSingleEvent(data: EmaExtraData) {

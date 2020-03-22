@@ -22,8 +22,8 @@ abstract class BaseViewModel<T, NS : EmaNavigationState> : EmaViewModel<T, NS>()
     }
 
     override fun onResume(firstTime: Boolean) {
-        onStartAnalytic()
+//        onStartAnalytic()
     }
 
-    abstract fun onStartAnalytic()
+//    abstract fun onStartAnalytic()
 }

@@ -14,6 +14,7 @@ import com.infectapp.presentation.model.ToolbarModel
 import com.infectapp.presentation.navigation.MainNavigator
 import com.infectapp.domain.STRING_EMPTY
 import com.infectapp.R
+import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_tabbar.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -109,10 +110,10 @@ class MainToolbarsViewActivity : BaseActivity(), EmaView<HomeToolbarsState, Main
     }
 
     private fun checkTabbarVisibility(data: HomeToolbarsState) {
-        if (data.tabbarModel.visibility)
-            showTabbar()
-        else
-            hideTabbar()
+//        if (data.tabbarModel.visibility)
+//            showTabbar()
+//        else
+//            hideTabbar()
     }
 
     private fun checkToolbarVisibility(data: HomeToolbarsState): Boolean {
@@ -152,16 +153,16 @@ class MainToolbarsViewActivity : BaseActivity(), EmaView<HomeToolbarsState, Main
     override fun provideFixedToolbarTitle(): String? = STRING_EMPTY
 
     override val layoutId = R.layout.activity_main
-
-    private fun showTabbar() {
-        (navHostFragment.view?.layoutParams as? ConstraintLayout.LayoutParams)?.bottomMargin = bottomViewMargin
-        clTabbar.visibility = View.VISIBLE
-    }
-
-    private fun hideTabbar() {
-        (navHostFragment.view?.layoutParams as? ConstraintLayout.LayoutParams)?.bottomMargin = 0
-        clTabbar.visibility = View.GONE
-    }
+//
+//    private fun showTabbar() {
+//        (navHostFragment.view?.layoutParams as? ConstraintLayout.LayoutParams)?.bottomMargin = bottomViewMargin
+//        clTabbar.visibility = View.VISIBLE
+//    }
+//
+//    private fun hideTabbar() {
+//        (navHostFragment.view?.layoutParams as? ConstraintLayout.LayoutParams)?.bottomMargin = 0
+//        clTabbar.visibility = View.GONE
+//    }
 
     override var previousState: HomeToolbarsState? = null
 

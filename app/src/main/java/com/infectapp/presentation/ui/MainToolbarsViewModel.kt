@@ -19,9 +19,6 @@ import com.infectapp.presentation.navigation.MainNavigator
 class MainToolbarsViewModel : BaseViewModel<HomeToolbarsState, MainNavigator.Navigation>() {
 
 
-    override fun onStartAnalytic() {
-    }
-
     fun onActionBackClicked() {
     }
 

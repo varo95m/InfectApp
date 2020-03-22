@@ -16,8 +16,6 @@ import kotlinx.coroutines.delay
  */
 
 class SplashViewModel : BaseViewModel<SplashState, SplashNavigator.Navigation>() {
-    override fun onStartAnalytic() {
-    }
 
     override val initialViewState: SplashState = SplashState()
 
@@ -25,6 +23,15 @@ class SplashViewModel : BaseViewModel<SplashState, SplashNavigator.Navigation>()
         super.onStartFirstTime(statePreloaded)
         executeUseCase {
             delay(SPLASH_DELAY)
+            navigate(SplashNavigator.Navigation.LoginFromSplash)
+        }
+    }
+
+
+    fun showSplashAndNavigate() {
+        executeUseCase {
+
+            delay(5000)
             navigate(SplashNavigator.Navigation.LoginFromSplash)
         }
     }
