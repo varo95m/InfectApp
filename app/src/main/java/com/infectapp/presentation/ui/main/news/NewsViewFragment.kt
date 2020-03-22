@@ -1,4 +1,4 @@
-package com.infectapp.presentation.ui.main.search
+package com.infectapp.presentation.ui.main.news
 
 import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.R
@@ -6,23 +6,23 @@ import com.infectapp.presentation.base.BaseFragment
 import com.infectapp.presentation.navigation.MainNavigator
 import org.kodein.di.generic.instance
 
-class SearchViewFragment : BaseFragment<SearchState, SearchViewModel, MainNavigator.Navigation>() {
+class NewsViewFragment : BaseFragment<NewsState, NewsViewModel, MainNavigator.Navigation>() {
 
-    override val viewModelSeed: SearchViewModel by instance()
+    override val viewModelSeed: NewsViewModel by instance()
 
     override val navigator: MainNavigator by instance()
 
-    private var vm: SearchViewModel? = null
+    private var vm: NewsViewModel? = null
 
-    override val layoutId: Int get() = R.layout.fragment_ranking
+    override val layoutId: Int get() = R.layout.fragment_news
 
 
-    override fun onInitialized(viewModel: SearchViewModel) {
+    override fun onInitialized(viewModel: NewsViewModel) {
         vm = viewModel
     }
 
 
-    override fun onNormal(data: SearchState) {
+    override fun onNormal(data: NewsState) {
     }
 
 
@@ -39,7 +39,7 @@ class SearchViewFragment : BaseFragment<SearchState, SearchViewModel, MainNaviga
     }
 
     companion object{
-        fun newInstance(): SearchViewFragment = SearchViewFragment()
+        fun newInstance(): NewsViewFragment = NewsViewFragment()
     }
 
 }

@@ -28,11 +28,6 @@ class SplashViewFragment : BaseFragment<SplashState, SplashViewModel, SplashNavi
 
     override fun onInitialized(viewModel: SplashViewModel) {
         vm = viewModel
-        showSplash()
-    }
-
-    private fun showSplash() {
-        vm?.showSplashAndNavigate()
     }
 
     override fun onNormal(data: SplashState) {

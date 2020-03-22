@@ -1,10 +1,10 @@
-package com.infectapp.presentation.ui.main.map
+package com.infectapp.presentation.ui.main.ranking
 
 import com.infectapp.presentation.base.BaseViewModel
 import com.infectapp.presentation.navigation.MainNavigator
 
 
-class MapViewModel : BaseViewModel<MapState, MainNavigator.Navigation>() {
+class RankingViewModel : BaseViewModel<RankingState, MainNavigator.Navigation>() {
 
     override fun onStartFirstTime(statePreloaded: Boolean) {
 
@@ -14,6 +14,6 @@ class MapViewModel : BaseViewModel<MapState, MainNavigator.Navigation>() {
 
     }
 
-    override val initialViewState: MapState = MapState()
+    override val initialViewState: RankingState = RankingState()
 
 }

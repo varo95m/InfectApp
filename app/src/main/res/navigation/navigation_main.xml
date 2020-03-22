@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/graphMain"/>
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graphMain"
+    app:startDestination="@id/mainViewFragment">
+    <fragment
+        android:id="@+id/mainViewFragment"
+        android:name="com.infectapp.presentation.ui.main.MainViewFragment"
+        android:label="MainViewFragment"
+        tools:layout="@layout/activity_main"/>
+</navigation>

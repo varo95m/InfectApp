@@ -6,8 +6,8 @@ import com.infectapp.R
 import com.infectapp.presentation.base.BaseFragment
 import com.infectapp.presentation.navigation.MainNavigator
 import com.infectapp.presentation.ui.main.home.HomeViewFragment
-import com.infectapp.presentation.ui.main.map.MapViewFragment
-import com.infectapp.presentation.ui.main.search.SearchViewFragment
+import com.infectapp.presentation.ui.main.ranking.RankingViewFragment
+import com.infectapp.presentation.ui.main.news.NewsViewFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.di.generic.instance
 
@@ -47,12 +47,12 @@ class MainViewFragment : BaseFragment<MainState, MainViewModel, MainNavigator.Na
                     true
                 }
                 R.id.action_ranking ->{
-                    val fragment = MapViewFragment.newInstance()
+                    val fragment = RankingViewFragment.newInstance()
                     openFragment(fragment)
                     true
                 }
                 R.id.action_news ->{
-                    val fragment = SearchViewFragment.newInstance()
+                    val fragment = NewsViewFragment.newInstance()
                     openFragment(fragment)
                     true
                 }

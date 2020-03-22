@@ -11,6 +11,7 @@ import com.infectapp.presentation.dialog.simple.SimpleDialogProvider
 import com.infectapp.presentation.navigation.MainNavigator
 import com.infectapp.presentation.navigation.SplashNavigator
 import com.infectapp.presentation.ui.MainToolbarsViewModel
+import com.infectapp.presentation.ui.main.login.LoginNavigator
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -34,6 +35,8 @@ fun injectionActivityModule(activity: BaseActivity) = Kodein.Module(name = "Acti
     //NAVIGATOR//
 
     bind<SplashNavigator>() with singleton { SplashNavigator(instance(), instance()) }
+
+    bind<LoginNavigator>() with singleton { LoginNavigator(instance()) }
 
     bind<MainNavigator>() with singleton { MainNavigator(instance()) }
 
