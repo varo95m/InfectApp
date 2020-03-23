@@ -34,10 +34,11 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_ranking_item_one"
+                style="@style/EditTextGreyBorder"
+                android:background="@drawable/shape_green_border"
                 android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/bg_border_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -84,10 +85,11 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_ranking_item_two"
+                style="@style/EditTextGreyBorder"
+                android:background="@drawable/shape_green_border"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/bg_border_gray"
                 app:layout_constraintEnd_toEndOf="@id/cl_ranking_item_one"
                 app:layout_constraintStart_toStartOf="@id/cl_ranking_item_one"
                 app:layout_constraintTop_toBottomOf="@id/cl_ranking_item_one">
@@ -134,10 +136,11 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_ranking_item_three"
+                style="@style/EditTextGreyBorder"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/bg_border_gray"
+                android:background="@drawable/shape_green_border"
                 app:layout_constraintEnd_toEndOf="@id/cl_ranking_item_two"
                 app:layout_constraintStart_toStartOf="@id/cl_ranking_item_two"
                 app:layout_constraintTop_toBottomOf="@id/cl_ranking_item_two">
@@ -197,9 +200,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tv_ranking_item_own_user"
+        style="@style/EditTextGreyBorder"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_border_gray"
+        android:background="@drawable/shape_green_border"
         android:padding="3dp"
         app:layout_constraintVertical_bias="1"
         app:layout_constraintEnd_toEndOf="parent"
