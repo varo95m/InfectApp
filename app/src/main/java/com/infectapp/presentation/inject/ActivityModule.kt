@@ -12,6 +12,10 @@ import com.infectapp.presentation.navigation.MainNavigator
 import com.infectapp.presentation.navigation.SplashNavigator
 import com.infectapp.presentation.ui.MainToolbarsViewModel
 import com.infectapp.presentation.ui.main.login.LoginNavigator
+import com.infectapp.presentation.ui.main.register.email.RegisterEmailViewNavigator
+import com.infectapp.presentation.ui.main.register.password.RegisterPasswordNavigator
+import com.infectapp.presentation.ui.main.register.start.RegisterStartNavigator
+import com.infectapp.presentation.ui.main.register.username.RegisterUsernameNavigator
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -39,6 +43,14 @@ fun injectionActivityModule(activity: BaseActivity) = Kodein.Module(name = "Acti
     bind<LoginNavigator>() with singleton { LoginNavigator(instance()) }
 
     bind<MainNavigator>() with singleton { MainNavigator(instance()) }
+
+    bind<RegisterStartNavigator>() with singleton { RegisterStartNavigator(instance()) }
+
+    bind<RegisterEmailViewNavigator>() with singleton { RegisterEmailViewNavigator(instance()) }
+
+    bind<RegisterUsernameNavigator>() with singleton { RegisterUsernameNavigator(instance()) }
+
+    bind<RegisterPasswordNavigator>() with singleton { RegisterPasswordNavigator(instance()) }
 
     bind<FragmentManager>() with provider { activity.supportFragmentManager }
 

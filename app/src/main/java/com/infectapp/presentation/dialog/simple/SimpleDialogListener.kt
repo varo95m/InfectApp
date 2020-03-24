@@ -13,5 +13,5 @@ import com.carmabs.ema.core.dialog.EmaDialogListener
  */
 interface SimpleDialogListener : EmaDialogListener {
     fun onCancelClicked()
-    fun onConfirmClicked(string: String)
+    fun onConfirmClicked()
 }

@@ -8,9 +8,14 @@ import com.infectapp.presentation.ui.main.home.HomeViewModel
 import com.infectapp.presentation.ui.main.login.LoginViewModel
 import com.infectapp.presentation.ui.main.news.NewsViewModel
 import com.infectapp.presentation.ui.main.ranking.RankingViewModel
+import com.infectapp.presentation.ui.main.register.email.RegisterEmailViewModel
+import com.infectapp.presentation.ui.main.register.password.RegisterPasswordViewModel
+import com.infectapp.presentation.ui.main.register.start.RegisterStartViewModel
+import com.infectapp.presentation.ui.main.register.username.RegisterUsernameViewModel
 import com.infectapp.presentation.ui.splash.SplashViewModel
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
+import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
@@ -39,6 +44,14 @@ fun generateFragmentModule(fragment: Fragment) = Kodein.Module(name = "FragmentM
     bind<NewsViewModel>() with provider { NewsViewModel() }
 
     bind<RankingViewModel>() with provider { RankingViewModel() }
+
+    bind<RegisterStartViewModel>() with provider { RegisterStartViewModel() }
+
+    bind<RegisterEmailViewModel>() with provider { RegisterEmailViewModel() }
+
+    bind<RegisterUsernameViewModel>() with provider { RegisterUsernameViewModel(instance()) }
+
+    bind<RegisterPasswordViewModel>() with provider { RegisterPasswordViewModel() }
 
     //USE CASE//
 
