@@ -1,7 +1,5 @@
 package com.infectapp.domain
 
-import com.infectapp.domain.utils.RegexUtils
-
 /**
  * <p>
  * Copyright (c) 2019, InfectApp Inc. All rights reserved.
@@ -12,4 +10,7 @@ import com.infectapp.domain.utils.RegexUtils
  * Date: 2019-12-18
  */
 
-fun String.isEmail(): Boolean = RegexUtils.isEmail(this)
+fun String.isValidEmail(): Boolean {
+    val regex = "^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})"
+    return regex.toRegex().matches(this)
+}

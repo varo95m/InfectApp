@@ -1,10 +1,25 @@
 <resources>
-    <!-- commons -->
-    <string name="facebook_app_id">1075773502772292</string>
-    <string name="fb_login_protocol_scheme">fb1075773502772292</string>
-
+    <string name="dialog_loading_text">Cargando. Danos unos segundos...</string>
 
 
     <string name="home_has_infected_users">%s de %s usuarios</string>
     <string name="home_has_infected_percentage">%s% del total</string>
+    <!-- Login -->
+    <string name="login_username">Usuario</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_button_join">Iniciar Sesión</string>
+    <string name="login_button_register">Registrarte</string>
+    <string name="login_forgot_password">¿Has olvidado tu contraseña?</string>
+
+    <!-- Register -->
+    <string name="register_start_text">¡Bienvenido a InfectApp! Crea tu cuenta en tres simples pasos.</string>
+    <string name="register_start_button">Comenzar</string>
+    <string name="register_email_text">Introduce tu email</string>
+    <string name="register_email_button">Siguiente</string>
+    <string name="register_email_error">Debes introducir un email válido</string>
+    <string name="register_username_text">Ahora dinos tu nombre de usuario</string>
+    <string name="register_username_button">Finalizar</string>
+    <string name="register_password_button">Siguiente</string>
+    <string name="register_password_min_lenght">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="register_password_equal">Las contraseñas no coinciden</string>
 </resources>

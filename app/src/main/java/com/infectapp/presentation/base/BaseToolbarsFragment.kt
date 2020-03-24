@@ -17,11 +17,14 @@ import org.kodein.di.generic.instance
 
 abstract class BaseToolbarsFragment<S : EmaBaseState, VM : BaseToolbarsViewModel<S, NS>, NS : EmaNavigationState> : BaseFragment<S, VM, NS>() {
 
+    private val mainToolbarsViewModelSeed: MainToolbarsViewModel by instance()
+
     lateinit var mainToolbarsVm: MainToolbarsViewModel
 
     override fun onInitialized(viewModel: VM) {
 
         (viewModel as? BaseToolbarsViewModel<*, *>)?.also {
+            mainToolbarsVm = addExtraViewModel(mainToolbarsViewModelSeed,this,requireActivity())
             it.mainToolbarsVm = mainToolbarsVm
             onInitializedWithToolbarsManagement(viewModel, mainToolbarsVm)
         } ?: throw RuntimeException("The view model must be inherited from BaseToolbarsViewModel")
