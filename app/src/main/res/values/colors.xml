@@ -10,4 +10,8 @@
     <color name="riffle_green">#3d3d3d</color>
     <color name="munsell">#f2f2f2</color>
 
+    <color name="greenRadioactive">#05F10F</color>
+    <color name="grey">#A6A6A6</color>
+    <color name="darkGreen">#027305</color>
+    <color name="redError">#870000</color>
 </resources>

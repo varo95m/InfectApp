@@ -13,10 +13,8 @@
 
 package com.infectapp.domain.utils
 
+import java.util.regex.Pattern
+
 object RegexUtils {
     //TODO Create function for password
-    fun isEmail(s: String): Boolean {
-        val pattern = "[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"
-        return s.matches(pattern.toRegex())
-    }
 }
