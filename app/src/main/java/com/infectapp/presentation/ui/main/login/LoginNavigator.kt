@@ -17,10 +17,20 @@ class LoginNavigator(override val navController: NavController) : BaseNavigator<
             }
         }
 
+        object FromLoginToHome : Navigation() {
+            override fun navigateWith(navigator: EmaBaseNavigator<out EmaNavigationState>) {
+                val nav = navigator as LoginNavigator
+                nav.toHome()
+            }
+        }
+
     }
 
     private fun toRegisterStart() {
         navigateWithAction(R.id.action_loginViewFragment_to_registerStartViewFragment)
     }
 
+    private fun toHome() {
+        navigateWithAction(R.id.action_loginViewFragment_to_mainViewFragment2)
+    }
 }
