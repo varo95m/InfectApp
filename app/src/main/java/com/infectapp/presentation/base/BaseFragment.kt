@@ -1,9 +1,7 @@
 package com.infectapp.presentation.base
 
-import android.content.Context
 import android.os.SystemClock
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import com.carmabs.ema.android.ui.EmaFragment
 import com.carmabs.ema.core.dialog.EmaDialogProvider
 import com.carmabs.ema.core.navigator.EmaNavigationState
@@ -11,14 +9,9 @@ import com.carmabs.ema.core.state.EmaBaseState
 import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.presentation.DEFAULT_CLICK_LISTENER_THRESHOLD
 import com.infectapp.presentation.KODEIN_TAG_DIALOG_SIMPLE
-import com.infectapp.presentation.dialog.simple.SimpleDialogData
-import com.infectapp.presentation.dialog.simple.SimpleDialogListener
 import com.infectapp.presentation.generateFragmentModule
-import com.infectapp.domain.exceptions.InternalServerException
-import com.infectapp.domain.exceptions.NoInternetException
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
-import java.util.concurrent.TimeoutException
 
 /**
  * <p>
@@ -42,16 +35,6 @@ abstract class BaseFragment<S : EmaBaseState, VM : BaseViewModel<S, NS>, NS : Em
     private val dialogProvider: EmaDialogProvider by instance(KODEIN_TAG_DIALOG_SIMPLE)
 
     override fun onStateError(error: Throwable) {
-        when (error) {
-            is NoInternetException -> onNoInternetException(error)
-            is TimeoutException -> onTimeoutException(error)
-            is InternalServerException -> onInternalServerException(error)
-            is IllegalArgumentException -> onInternalServerException(error)
-            else -> {
-                if (!onError(error))
-                    onInternalServerException(error)
-            }
-        }
     }
 
     override fun onStateNormal(data: S) {
@@ -79,74 +62,6 @@ abstract class BaseFragment<S : EmaBaseState, VM : BaseViewModel<S, NS>, NS : Em
                 function.invoke(this)
             }
         }
-
     }
-
-    protected open fun onNoInternetException(error: NoInternetException, onAcceptListener: ((EmaDialogProvider) -> Unit)? = null) {
-        dialogProvider.show(SimpleDialogData(
-                showCross = false
-        ))
-
-        dialogProvider.dialogListener = object : SimpleDialogListener {
-            override fun onCancelClicked() {
-                dialogProvider.hide()
-            }
-
-            override fun onConfirmClicked(string: String) {
-                onAcceptListener?.invoke(dialogProvider)
-                        ?: dialogProvider.hide()
-            }
-
-            override fun onBackPressed() {
-                dialogProvider.hide()
-            }
-
-        }
-    }
-
-    protected open fun onInternalServerException(error: Throwable, onAcceptListener: ((EmaDialogProvider) -> Unit)? = null) {
-        dialogProvider.show(SimpleDialogData(
-                showCross = false
-        ))
-
-        dialogProvider.dialogListener = object : SimpleDialogListener {
-            override fun onCancelClicked() {
-                dialogProvider.hide()
-            }
-
-            override fun onBackPressed() {
-                dialogProvider.hide()
-            }
-
-            override fun onConfirmClicked(string: String) {
-                onAcceptListener?.invoke(dialogProvider)
-                        ?: dialogProvider.hide()
-            }
-
-        }
-    }
-
-    protected open fun onTimeoutException(error: TimeoutException, onAcceptListener: ((EmaDialogProvider) -> Unit)? = null) {
-        dialogProvider.show(SimpleDialogData(
-                showCross = true
-        ))
-
-        dialogProvider.dialogListener = object : SimpleDialogListener {
-            override fun onCancelClicked() {
-                dialogProvider.hide()
-            }
-
-            override fun onBackPressed() {
-                dialogProvider.hide()
-            }
-
-            override fun onConfirmClicked(string: String) {
-                onAcceptListener?.invoke(dialogProvider)
-                        ?: dialogProvider.hide()
-            }
-
-        }
-    }
-
 }
 
