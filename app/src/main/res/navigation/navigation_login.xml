@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_loginViewFragment_to_registerStartViewFragment"
             app:destination="@id/Register" />
+        <action
+            android:id="@+id/action_loginViewFragment_to_mainViewFragment2"
+            app:destination="@id/mainViewFragment2" />
     </fragment>
     <navigation
         android:id="@+id/Register"
@@ -45,4 +48,8 @@
                 app:destination="@id/registerUsernameViewFragment" />
         </fragment>
     </navigation>
+    <fragment
+        android:id="@+id/mainViewFragment2"
+        android:name="com.infectapp.presentation.ui.main.MainViewFragment"
+        android:label="MainViewFragment" />
 </navigation>

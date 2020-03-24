@@ -2,10 +2,16 @@ package com.infectapp.presentation.ui.main.login
 
 import android.text.Editable
 import android.text.TextWatcher
+import com.carmabs.ema.core.dialog.EmaDialogProvider
 import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.R
+import com.infectapp.presentation.KODEIN_TAG_DIALOG_LOADING
+import com.infectapp.presentation.KODEIN_TAG_DIALOG_SIMPLE
 import com.infectapp.presentation.base.BaseToolbarsFragment
+import com.infectapp.presentation.dialog.simple.SimpleDialogData
 import com.infectapp.presentation.ui.MainToolbarsViewModel
+import com.infectapp.presentation.ui.main.login.LoginViewModel.Companion.FIELDS_EMPTY_DIALOG
+import com.infectapp.presentation.ui.main.login.LoginViewModel.Companion.INVALID_FIELDS_DIALOG
 import com.musketeers.richsnet.presentation.ui.login.LoginState
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.kodein.di.generic.instance
@@ -18,6 +24,10 @@ class LoginViewFragment : BaseToolbarsFragment<LoginState, LoginViewModel, Login
 
     private lateinit var vm: LoginViewModel
 
+    private val simpleDialog: EmaDialogProvider by instance(KODEIN_TAG_DIALOG_SIMPLE)
+
+    private val loadingDialog: EmaDialogProvider by instance(tag = KODEIN_TAG_DIALOG_LOADING)
+
     override fun onError(error: Throwable): Boolean {
         return false
     }
@@ -26,9 +36,22 @@ class LoginViewFragment : BaseToolbarsFragment<LoginState, LoginViewModel, Login
     }
 
     override fun onNormal(data: LoginState) {
+        loadingDialog.hide()
+        simpleDialog.hide()
     }
 
     override fun onAlternative(data: EmaExtraData) {
+        when (data.type) {
+            INVALID_FIELDS_DIALOG -> simpleDialog.show(SimpleDialogData(
+                    title = "Upss",
+                    message = "Usuario o contraseña incorrecto."
+            ))
+            FIELDS_EMPTY_DIALOG -> simpleDialog.show(SimpleDialogData(
+                    title = "Upss",
+                    message = "Los datos no pueden estar en blanco."
+            ))
+            else -> loadingDialog.show()
+        }
     }
 
     override val layoutId: Int = R.layout.fragment_login
@@ -56,6 +79,9 @@ class LoginViewFragment : BaseToolbarsFragment<LoginState, LoginViewModel, Login
         })
         bLoginRegister.setOnClickListener {
             vm.onActionRegister()
+        }
+        bLoginJoin.setOnClickListener {
+            vm.onActionLogin()
         }
     }
 
