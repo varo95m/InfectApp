@@ -1,12 +1,9 @@
 package com.infectapp.presentation.dialog.simple
 
-import android.text.method.ScrollingMovementMethod
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
 import com.carmabs.ema.android.ui.dialog.EmaBaseDialog
 import com.infectapp.R
-import kotlinx.android.synthetic.main.dialog_simple.*
 import kotlinx.android.synthetic.main.dialog_simple.view.*
 
 /**
@@ -23,21 +20,14 @@ class SimpleDialog : EmaBaseDialog<SimpleDialogData>() {
 
     override fun setupData(data: SimpleDialogData, view: View) {
         with(data) {
-
-            (dialogListener as? SimpleDialogListener)?.let { listener ->
+            view.apply {
+                (dialogListener as? SimpleDialogListener)?.let { listener ->
+                    view.bDialogSimpleButton.setOnClickListener { listener.onConfirmClicked() }
+                }
+                tvDialogSimpleTitle.text = data.title
+                tvDialogSimpleMessage.text = data.message
+                imDialogSimple.setImageDrawable(data.image)
             }
-
-            (dialogListener as? SimpleDialogListener)?.let { listener ->
-            }
-        }
-    }
-
-    private fun assignGravity(gravity: SimpleDialogData.Gravity): Int {
-        return when (gravity) {
-            SimpleDialogData.Gravity.LEFT -> Gravity.START
-            SimpleDialogData.Gravity.CENTER -> Gravity.CENTER
-            SimpleDialogData.Gravity.RIGHT -> Gravity.END
-            SimpleDialogData.Gravity.JUSTIFIED -> Gravity.FILL
         }
     }
 

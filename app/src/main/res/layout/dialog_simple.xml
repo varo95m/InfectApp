@@ -1,8 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    android:background="@drawable/shape_dialog"
+    android:padding="30dp">
+
+    <TextView
+        android:id="@+id/tvDialogSimpleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/imDialogSimple"
+        app:layout_constraintStart_toStartOf="@+id/imDialogSimple"
+        app:layout_constraintTop_toBottomOf="@+id/imDialogSimple"
+        tools:text="Este texto es el título" />
+
+    <ImageView
+        android:id="@+id/imDialogSimple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvDialogSimpleMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/tvDialogSimpleTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvDialogSimpleTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvDialogSimpleTitle"
+        tools:text="Este texto es la descripcionEste texto es la descripcionEste texto es la descripcionEste texto es la descripcionEste texto es la descripcion" />
+
+    <Button
+        android:id="@+id/bDialogSimpleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="@+id/tvDialogSimpleMessage"
+        app:layout_constraintStart_toStartOf="@+id/tvDialogSimpleMessage"
+        app:layout_constraintTop_toBottomOf="@+id/tvDialogSimpleMessage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
