@@ -8,6 +8,7 @@ import com.infectapp.presentation.navigation.MainNavigator
 import com.infectapp.presentation.ui.main.home.HomeViewFragment
 import com.infectapp.presentation.ui.main.ranking.RankingViewFragment
 import com.infectapp.presentation.ui.main.news.NewsViewFragment
+import com.infectapp.presentation.ui.main.ranking.RankingState
 import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.di.generic.instance
 
@@ -42,16 +43,22 @@ class MainViewFragment : BaseFragment<MainState, MainViewModel, MainNavigator.Na
         btv_main.setOnNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId){
                 R.id.action_home ->{
+                    vm?.onActionHome()
                     val fragment = HomeViewFragment.newInstance()
                     openFragment(fragment)
                     true
                 }
                 R.id.action_ranking ->{
+                    vm?.onActionRanking()
                     val fragment = RankingViewFragment.newInstance()
+                    RankingState(
+
+                    )
                     openFragment(fragment)
                     true
                 }
                 R.id.action_news ->{
+                    vm?.onActionNews()
                     val fragment = NewsViewFragment.newInstance()
                     openFragment(fragment)
                     true

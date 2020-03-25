@@ -8,4 +8,6 @@ interface Repository {
     suspend fun createAccount(requestCreateAccountModel: RequestCreateAccountModel)
 
     suspend fun login(requestLoginModel: RequestLoginModel)
+
+    suspend fun getInfectedList(): List<InfectedUserModel>
 }

@@ -31,6 +31,12 @@ android {
             buildConfigField 'String', 'URL_APP', '"https://www.infectapp.com"'
             buildConfigField 'Boolean', 'IGNORE_SECURE_HTTP', 'true'
         }
+        pre {
+            dimension 'environment'
+            buildConfigField 'String', 'DB_NAME', '"MockDatabase"'
+            buildConfigField 'String', 'URL_APP', '"https://www.infectapp.com"'
+            buildConfigField 'Boolean', 'IGNORE_SECURE_HTTP', 'true'
+        }
     }
 
     compileOptions {

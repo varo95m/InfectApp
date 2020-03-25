@@ -30,6 +30,11 @@ android {
             buildConfigField 'Boolean', 'PORTRAIT_ORIENTATION', 'false'
             buildConfigField 'Boolean', 'PORTRAIT_ORIENTATION', 'false'
         }
+        pre {
+            dimension 'environment'
+            buildConfigField 'Boolean', 'PORTRAIT_ORIENTATION', 'false'
+            buildConfigField 'Boolean', 'PORTRAIT_ORIENTATION', 'false'
+        }
     }
 
     lintOptions {

@@ -40,7 +40,7 @@ fun injectionActivityModule(activity: BaseActivity) = Kodein.Module(name = "Acti
 
     bind<SplashNavigator>() with singleton { SplashNavigator(instance(), instance()) }
 
-    bind<LoginNavigator>() with singleton { LoginNavigator(instance()) }
+//    bind<LoginNavigator>() with singleton { LoginNavigator(instance()) }
 
     bind<MainNavigator>() with singleton { MainNavigator(instance()) }
 
