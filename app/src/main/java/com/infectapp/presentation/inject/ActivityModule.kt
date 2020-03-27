@@ -52,6 +52,8 @@ fun injectionActivityModule(activity: BaseActivity) = Kodein.Module(name = "Acti
 
     bind<RegisterPasswordNavigator>() with singleton { RegisterPasswordNavigator(instance()) }
 
+    bind<LoginNavigator>() with singleton { LoginNavigator(instance()) }
+
     bind<FragmentManager>() with provider { activity.supportFragmentManager }
 
     bind<MainToolbarsViewModel>() with provider { MainToolbarsViewModel() }

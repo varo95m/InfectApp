@@ -36,9 +36,7 @@ class RankingViewFragment :
 
     override fun onNormal(data: RankingState) {
         data.otherUsersList?.let { otherUserList ->
-            rvRankingOtherUsers.adapter?.let {
-                it.notifyDataSetChanged()
-            }?: run {
+            rvRankingOtherUsers.adapter?.notifyDataSetChanged() ?: run {
                 rvRankingOtherUsers.adapter =
                     OtherUserAdapter(
                         otherUserList.toMutableList()
