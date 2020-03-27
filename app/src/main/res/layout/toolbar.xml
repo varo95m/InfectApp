@@ -12,17 +12,6 @@
         android:layout_height="60dp"
         android:animateLayoutChanges="true">
 
-        <Button
-            android:id="@+id/bToolbarSettings"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="16dp"
-            android:elevation="0dp"
-            android:gravity="center|center_horizontal|center_vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/view"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/emaToolbar"
             android:layout_width="0dp"
@@ -78,17 +67,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="TITLE"
             tools:visibility="visible" />
-
-        <ImageView
-            android:id="@+id/imToolbarBack"
-            android:layout_width="20dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvToolbarTitle"
-            app:layout_constraintEnd_toStartOf="@+id/tvToolbarTitle"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toTopOf="@+id/tvToolbarTitle"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

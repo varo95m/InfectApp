@@ -29,54 +29,53 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_home_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/bg_border_gray"
-        app:layout_constraintTop_toBottomOf="@+id/iv_home_virus"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/iv_home_virus">
 
         <TextView
             android:id="@+id/tv_home_has_infected_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Has infectado"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_home_has_infected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@string/home_has_infected_users"
-            app:layout_constraintTop_toBottomOf="@+id/tv_home_has_infected_title"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_home_has_infected_title"
+            tools:text="@string/home_has_infected_users" />
 
         <TextView
             android:id="@+id/tv_home_percentage_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Esto implica un"
-            app:layout_constraintTop_toBottomOf="@+id/tv_home_has_infected"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_home_has_infected" />
 
         <TextView
             android:id="@+id/tv_home_percentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@string/home_has_infected_percentage"
-            app:layout_constraintTop_toBottomOf="@+id/tv_home_percentage_title"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-
-
-
+            app:layout_constraintTop_toBottomOf="@+id/tv_home_percentage_title"
+            tools:text="@string/home_has_infected_percentage" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
