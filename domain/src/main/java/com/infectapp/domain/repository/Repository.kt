@@ -1,5 +1,6 @@
 package com.infectapp.domain.repository
 
+import com.infectapp.domain.model.InfectedUserModel
 import com.infectapp.domain.model.RequestCreateAccountModel
 import com.infectapp.domain.model.RequestLoginModel
 

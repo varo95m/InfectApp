@@ -4,6 +4,12 @@
 
     <string name="home_has_infected_users">%s de %s usuarios</string>
     <string name="home_has_infected_percentage">%s% del total</string>
+    <!--Tabbar-->
+
+    <string name="tabbar_home">Inicio</string>
+    <string name="tabbar_news">Noticias</string>
+    <string name="tabbar_ranking">Ranking</string>
+
     <!-- Login -->
     <string name="login_username">Usuario</string>
     <string name="login_password">Contraseña</string>

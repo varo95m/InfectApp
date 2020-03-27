@@ -31,14 +31,7 @@ fun generateAppModule(app: Application) = Kodein.Module(name = "AppModule") {
 
     bind<Resources>() with singleton { app.resources }
 
-//   bind<Repository>() with singleton { ApiMrRepository() }
-
-    bind<Repository>() with singleton { MockRepository() }
-
-
     bind<SharedPreferences>() with singleton { app.getSharedPreferences(APP_ID, Context.MODE_PRIVATE) }
-
-
 
     bind<GetInfectedListUseCase>() with singleton { GetInfectedListUseCase(instance()) }
 

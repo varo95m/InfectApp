@@ -31,6 +31,6 @@ class LoginNavigator(override val navController: NavController) : BaseNavigator<
     }
 
     private fun toHome() {
-        navigateWithAction(R.id.action_loginViewFragment_to_mainViewFragment2)
+        navigateWithAction(R.id.action_loginViewFragment_to_mainToolbarsViewActivity)
     }
 }

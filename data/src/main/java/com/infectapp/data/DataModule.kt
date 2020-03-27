@@ -1,6 +1,6 @@
 package com.infectapp.data
 
-import com.infectapp.data.repository.ApiMrRepository
+import com.infectapp.data.repository.ApiInfectAppRepository
 import com.infectapp.domain.repository.Repository
 import com.infectapp.domain.usecase.CreateAccountUseCase
 import com.infectapp.domain.usecase.LoginUseCase
@@ -11,10 +11,10 @@ import org.kodein.di.generic.singleton
 
 fun generateDataModule() = Kodein.Module(name = "AppDataModule") {
 
-   bind<Repository>() with singleton { ApiMrRepository() }
+    bind<Repository>() with singleton { ApiInfectAppRepository() }
 
-   bind<CreateAccountUseCase>() with singleton { CreateAccountUseCase(instance()) }
+    bind<CreateAccountUseCase>() with singleton { CreateAccountUseCase(instance()) }
 
-   bind<LoginUseCase>() with singleton { LoginUseCase(instance()) }
+    bind<LoginUseCase>() with singleton { LoginUseCase(instance()) }
 
 }

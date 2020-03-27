@@ -3,10 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graphMain"
-    app:startDestination="@id/mainViewFragment">
+    app:startDestination="@id/homeViewFragment">
     <fragment
-        android:id="@+id/mainViewFragment"
-        android:name="com.infectapp.presentation.ui.main.MainViewFragment"
-        android:label="MainViewFragment"
-        tools:layout="@layout/activity_main"/>
+        android:id="@+id/newsViewFragment"
+        android:name="com.infectapp.presentation.ui.main.news.NewsViewFragment"
+        android:label="NewsViewFragment" />
+    <fragment
+        android:id="@+id/rankingViewFragment"
+        android:name="com.infectapp.presentation.ui.main.ranking.RankingViewFragment"
+        android:label="RankingViewFragment" />
+    <action
+        android:id="@+id/action_global_newsViewFragment"
+        app:destination="@id/newsViewFragment" />
+    <action
+        android:id="@+id/action_global_rankingViewFragment"
+        app:destination="@id/rankingViewFragment" />
+    <fragment
+        android:id="@+id/homeViewFragment"
+        android:name="com.infectapp.presentation.ui.main.home.HomeViewFragment"
+        android:label="HomeViewFragment" />
+    <action
+        android:id="@+id/action_global_homeViewFragment"
+        app:destination="@id/homeViewFragment" />
 </navigation>

@@ -12,29 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-
-    <FrameLayout
-        android:id="@+id/fl_main_fragment"
+    <fragment
+        android:id="@+id/navHostFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_below="@id/emaAppBarLayout"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/layoutHomeTabbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/emaAppBarLayout" />
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btv_main"
-        style="@style/BottomNavigation"
+    <com.infectapp.presentation.widget.TabbarWidget
+        android:id="@+id/layoutHomeTabbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:menu="@menu/bottom_menu"
-        app:labelVisibilityMode="selected"
-        app:layout_constraintTop_toBottomOf="@+id/fl_main_fragment"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="80dp"
+        app:layout_behavior="com.musketeers.richsnet.presentation.widget.CustomBottomBehaviour"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
