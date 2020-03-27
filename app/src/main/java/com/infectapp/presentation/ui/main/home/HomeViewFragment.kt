@@ -3,7 +3,9 @@ package com.infectapp.presentation.ui.main.home
 import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.R
 import com.infectapp.presentation.base.BaseFragment
+import com.infectapp.presentation.base.BaseToolbarsFragment
 import com.infectapp.presentation.navigation.MainNavigator
+import com.infectapp.presentation.ui.MainToolbarsViewModel
 import org.kodein.di.generic.instance
 
 
@@ -13,7 +15,7 @@ import org.kodein.di.generic.instance
  * @author <a href="mailto:jorgevguerra@hotmail.com">Jorge Valiño Guerra</a>
  */
 
-class HomeViewFragment: BaseFragment<HomeState, HomeViewModel, MainNavigator.Navigation>() {
+class HomeViewFragment: BaseToolbarsFragment<HomeState, HomeViewModel, MainNavigator.Navigation>() {
 
     override val viewModelSeed: HomeViewModel by instance()
 
@@ -23,15 +25,8 @@ class HomeViewFragment: BaseFragment<HomeState, HomeViewModel, MainNavigator.Nav
 
     override val layoutId: Int get() = R.layout.fragment_home
 
-
-    override fun onInitialized(viewModel: HomeViewModel) {
-        vm = viewModel
-    }
-
-
     override fun onNormal(data: HomeState) {
     }
-
 
     override fun onAlternative(data: EmaExtraData) {
 
@@ -45,8 +40,8 @@ class HomeViewFragment: BaseFragment<HomeState, HomeViewModel, MainNavigator.Nav
         return false
     }
 
-    companion object{
-        fun newInstance(): HomeViewFragment = HomeViewFragment()
+    override fun onInitializedWithToolbarsManagement(viewModel: HomeViewModel, mainToolbarViewModel: MainToolbarsViewModel) {
+
     }
 
 }

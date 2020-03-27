@@ -15,7 +15,6 @@ import com.infectapp.domain.STRING_EMPTY
 data class ToolbarModel(
     val backClickListener: (() -> Unit)? = null,
     val backVisibility: Boolean = false,
-    val backDrawableCross: Boolean = false,
     val closeSessionVisibility: Boolean = true,
     val title: String = STRING_EMPTY,
     val visibility: Boolean = true,
