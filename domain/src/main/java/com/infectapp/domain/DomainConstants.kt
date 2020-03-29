@@ -19,6 +19,7 @@ const val INT_ZERO = 0
 
 const val DOUBLE_ZERO = 0.00
 const val DOUBLE_ZERO_DOT_FIVE = 0.5
+const val DOUBLE_NEGATIVE = -1.00
 
 const val INT_ONE = 1
 const val INT_TWO = 2

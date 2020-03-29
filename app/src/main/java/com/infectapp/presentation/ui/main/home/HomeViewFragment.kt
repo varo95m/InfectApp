@@ -1,11 +1,14 @@
 package com.infectapp.presentation.ui.main.home
 
+import com.carmabs.ema.core.dialog.EmaDialogProvider
 import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.R
+import com.infectapp.presentation.KODEIN_TAG_DIALOG_LOADING
 import com.infectapp.presentation.base.BaseFragment
 import com.infectapp.presentation.base.BaseToolbarsFragment
 import com.infectapp.presentation.navigation.MainNavigator
 import com.infectapp.presentation.ui.MainToolbarsViewModel
+import kotlinx.android.synthetic.main.fragment_home.*
 import org.kodein.di.generic.instance
 
 
@@ -25,11 +28,23 @@ class HomeViewFragment: BaseToolbarsFragment<HomeState, HomeViewModel, MainNavig
 
     override val layoutId: Int get() = R.layout.fragment_home
 
+    private val loadingDialog: EmaDialogProvider by instance(tag = KODEIN_TAG_DIALOG_LOADING)
+
+    override fun onInitialized(viewModel: HomeViewModel) {
+        vm = viewModel
+        refreshHome.setOnRefreshListener { viewModel.onActionRefresh() }
+        ivHomeLinkToInfect.setOnClickListener { viewModel.onActionLinkClick() }
+    }
+
     override fun onNormal(data: HomeState) {
+        tv_home_total_infected.text = data.totalInfected.toString()
+//        tv_home_has_infected.text = String.format(getString(R.string.home_has_infected_users), data.userLogged?.totalInfectedByUser, data.totalInfected)
+        tv_home_percentage.text = data.percetangeByUser.toString()
+        loadingDialog.hide()
     }
 
     override fun onAlternative(data: EmaExtraData) {
-
+        loadingDialog.show()
     }
 
     override fun onSingleEvent(data: EmaExtraData) {
