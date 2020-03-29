@@ -7,5 +7,6 @@ data class RankingState(
     var totalUsersList: List<InfectedUserModel>? = null,
     var podiumUsersList: List<InfectedUserModel>? = null,
     var otherUsersList: List<InfectedUserModel>? = null,
-    var userLogged : InfectedUserModel? = null
+    var userLogged : InfectedUserModel? = null,
+    var otherUserData : InfectedUserModel? = null
 ) : EmaBaseState

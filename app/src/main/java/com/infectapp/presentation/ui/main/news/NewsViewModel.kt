@@ -12,4 +12,8 @@ class NewsViewModel : BaseViewModel<NewsState, MainNavigator.Navigation>() {
 
     override val initialViewState: NewsState = NewsState()
 
+    private fun onActionRefresh(){
+
+    }
+
 }

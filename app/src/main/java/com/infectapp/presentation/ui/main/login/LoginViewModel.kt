@@ -40,18 +40,19 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseToolbarsViewM
     }
 
     fun onActionLogin() {
-        updateToAlternativeState()
-        checkDataState {
-            if (it.user.isNotEmpty() && it.password.isNotEmpty()) {
-                executeUseCaseWithException({
-                    loginUseCase.execute(RequestLoginModel(it.user, it.password, listener = ::onLoginResponse))
-                }, { error ->
-                    updateToErrorState(error)
-                })
-            }else{
-                updateToAlternativeState(EmaExtraData(FIELDS_EMPTY_DIALOG))
-            }
-        }
+        navigate(LoginNavigator.Navigation.FromLoginToHome)
+//        updateToAlternativeState()
+//        checkDataState {
+//            if (it.user.isNotEmpty() && it.password.isNotEmpty()) {
+//                executeUseCaseWithException({
+//                    loginUseCase.execute(RequestLoginModel(it.user, it.password, listener = ::onLoginResponse))
+//                }, { error ->
+//                    updateToErrorState(error)
+//                })
+//            }else{
+//                updateToAlternativeState(EmaExtraData(FIELDS_EMPTY_DIALOG))
+//            }
+//        }
     }
 
     fun onLoginResponse(result: Boolean) {

@@ -4,6 +4,7 @@ import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.R
 import com.infectapp.presentation.base.BaseFragment
 import com.infectapp.presentation.navigation.MainNavigator
+import kotlinx.android.synthetic.main.fragment_news.*
 import org.kodein.di.generic.instance
 
 class NewsViewFragment : BaseFragment<NewsState, NewsViewModel, MainNavigator.Navigation>() {
@@ -19,6 +20,7 @@ class NewsViewFragment : BaseFragment<NewsState, NewsViewModel, MainNavigator.Na
 
     override fun onInitialized(viewModel: NewsViewModel) {
         vm = viewModel
+        refreshNews.setOnRefreshListener { viewModel.onActionRefresh() }
     }
 
 

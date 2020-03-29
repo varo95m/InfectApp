@@ -36,11 +36,14 @@ fun generateFragmentModule(fragment: Fragment) = Kodein.Module(name = "FragmentM
 
     bind<LoginViewModel>() with provider { LoginViewModel(instance()) }
 
-    bind<HomeViewModel>() with provider { HomeViewModel() }
+    bind<HomeViewModel>() with provider { HomeViewModel(instance()) }
 
     bind<NewsViewModel>() with provider { NewsViewModel() }
 
-    bind<RankingViewModel>() with provider { RankingViewModel() }
+    bind<RankingViewModel>() with provider { RankingViewModel(
+        instance(), instance(),
+        instance()
+    ) }
 
     bind<RegisterStartViewModel>() with provider { RegisterStartViewModel() }
 
