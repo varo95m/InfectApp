@@ -2,6 +2,8 @@ package com.infectapp.presentation.ui.main.login
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import com.carmabs.ema.core.dialog.EmaDialogProvider
 import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.R
@@ -32,6 +34,8 @@ class LoginViewFragment : BaseToolbarsFragment<LoginState, LoginViewModel, Login
         return false
     }
 
+    override val layoutId: Int = R.layout.fragment_login
+
     override fun onSingleEvent(data: EmaExtraData) {
     }
 
@@ -54,7 +58,6 @@ class LoginViewFragment : BaseToolbarsFragment<LoginState, LoginViewModel, Login
         }
     }
 
-    override val layoutId: Int = R.layout.fragment_login
 
     override fun onInitializedWithToolbarsManagement(viewModel: LoginViewModel, mainToolbarViewModel: MainToolbarsViewModel) {
         this.vm = viewModel
@@ -83,6 +86,14 @@ class LoginViewFragment : BaseToolbarsFragment<LoginState, LoginViewModel, Login
         bLoginJoin.setOnClickListener {
             vm.onActionLogin()
         }
+        etLoginPassword.setOnEditorActionListener { textView, actionId, keyEvent ->
+            if (actionId == EditorInfo.IME_ACTION_DONE ||
+                keyEvent?.action == KeyEvent.ACTION_DOWN && keyEvent.keyCode == KeyEvent.KEYCODE_ENTER) {
+                viewModel.onActionLogin()
+            }
+            false
+        }
+
     }
 
 }

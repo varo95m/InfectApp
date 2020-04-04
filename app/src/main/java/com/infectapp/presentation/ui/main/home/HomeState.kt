@@ -15,7 +15,8 @@ import com.infectapp.domain.model.InfectedUserModel
 data class HomeState(
  var userLogged: InfectedUserModel? = null,
  var totalInfected : Int = INT_NEGATIVE,
- var percetangeByUser : Int = INT_NEGATIVE
+ var percetangeByUser : Int = INT_NEGATIVE,
+ var link: String = STRING_EMPTY
 ) : EmaBaseState {
 
 
