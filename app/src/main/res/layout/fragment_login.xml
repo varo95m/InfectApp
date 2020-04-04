@@ -83,13 +83,10 @@
         style="@style/ButtonActionGreen"
         android:layout_width="0dp"
         android:layout_height="43dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
         android:text="@string/login_button_register"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etLoginPassword"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etLoginPassword"
+        app:layout_constraintEnd_toEndOf="@+id/bLoginJoin"
+        app:layout_constraintStart_toStartOf="@+id/bLoginJoin"
         app:layout_constraintTop_toBottomOf="@+id/bLoginJoin"
         app:layout_constraintVertical_bias="0.9" />
 

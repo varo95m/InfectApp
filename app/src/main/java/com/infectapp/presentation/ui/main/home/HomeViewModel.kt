@@ -1,8 +1,10 @@
 package com.infectapp.presentation.ui.main.home
 
 import android.net.Uri
+import android.util.Log
 import com.google.firebase.dynamiclinks.DynamicLink
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
+import com.google.firebase.dynamiclinks.ShortDynamicLink
 import com.infectapp.domain.INT_NEGATIVE
 import com.infectapp.domain.model.InfectedUserModel
 import com.infectapp.presentation.base.BaseToolbarsViewModel
@@ -41,14 +43,18 @@ class HomeViewModel(
         if (!statePreloaded) {
             updateToAlternativeState()
             getInfectedHomeData()
-            link = createDynamicLink(userLoggedInfo)
+            updateToNormalState {
+                copy(
+                    link = createDynamicLink(userLoggedInfo).toString()
+                )
+            }
         }
     }
 
     private fun getInfectedHomeData() {
         executeUseCaseWithException({
             checkDataState { state ->
-//                userLoggedInfo = getUserLoggedUseCase.execute(state.userLogged?.username)
+                //                userLoggedInfo = getUserLoggedUseCase.execute(state.userLogged?.username)
 //                totalInfectedInfo = getTotalInfectedUseCase.execute(Unit)
             }
         }, { error -> updateToErrorState(error) })
@@ -62,18 +68,15 @@ class HomeViewModel(
         }
     }
 
-
-    private fun createDynamicLink(userLoggedInfo: InfectedUserModel): Uri {
+    private fun createDynamicLink(userLoggedInfo: InfectedUserModel): String {
         val dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
-            .setLink(Uri.parse("https://infectapp.com/usr/"))
-            .setDomainUriPrefix("https://example.page.link")
+            .setLink(Uri.parse("https://infectapp.com/usr/userprueba"))
+            .setDomainUriPrefix("https://infectgame.com/usr/")
             // Open links with this app on Android
             .setAndroidParameters(DynamicLink.AndroidParameters.Builder().build())
-            // Open links with com.example.ios on iOS
-            .setIosParameters(DynamicLink.IosParameters.Builder("com.example.ios").build())
             .buildDynamicLink()
 
-        return dynamicLink.uri
+        return dynamicLink.uri.toString()
     }
 
 //    private fun calculatePercentage(): Double {

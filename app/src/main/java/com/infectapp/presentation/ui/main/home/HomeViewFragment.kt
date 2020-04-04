@@ -30,7 +30,7 @@ class HomeViewFragment: BaseToolbarsFragment<HomeState, HomeViewModel, MainNavig
 
     private val loadingDialog: EmaDialogProvider by instance(tag = KODEIN_TAG_DIALOG_LOADING)
 
-    override fun onInitialized(viewModel: HomeViewModel) {
+    override fun onInitializedWithToolbarsManagement(viewModel: HomeViewModel, mainToolbarViewModel: MainToolbarsViewModel) {
         vm = viewModel
         refreshHome.setOnRefreshListener { viewModel.onActionRefresh() }
         ivHomeLinkToInfect.setOnClickListener { viewModel.onActionLinkClick() }
@@ -40,6 +40,7 @@ class HomeViewFragment: BaseToolbarsFragment<HomeState, HomeViewModel, MainNavig
         tv_home_total_infected.text = data.totalInfected.toString()
 //        tv_home_has_infected.text = String.format(getString(R.string.home_has_infected_users), data.userLogged?.totalInfectedByUser, data.totalInfected)
         tv_home_percentage.text = data.percetangeByUser.toString()
+        ivHomeLinkToInfect.text = data.link
         loadingDialog.hide()
     }
 
@@ -54,9 +55,4 @@ class HomeViewFragment: BaseToolbarsFragment<HomeState, HomeViewModel, MainNavig
     override fun onError(error: Throwable): Boolean {
         return false
     }
-
-    override fun onInitializedWithToolbarsManagement(viewModel: HomeViewModel, mainToolbarViewModel: MainToolbarsViewModel) {
-
-    }
-
 }

@@ -24,14 +24,21 @@
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
             android:name=".presentation.ui.main.login.LoginViewActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:host="infectgame.com"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name="com.infectapp.presentation.ui.MainToolbarsViewActivity"

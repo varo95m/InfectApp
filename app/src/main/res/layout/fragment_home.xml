@@ -93,11 +93,12 @@
                 app:layout_constraintStart_toEndOf="@+id/tv_home_percentage"
                 app:layout_constraintTop_toTopOf="@+id/tv_home_percentage" />
 
-            <ImageView
+            <TextView
                 android:id="@+id/ivHomeLinkToInfect"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
                 android:background="@color/greenRadioactive"
+                android:textIsSelectable="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
