@@ -46,7 +46,20 @@
                 android:background="@drawable/shape_dark_green"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_home_virus" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_home_virus">
+
+                <com.infectapp.presentation.widget.CustomGraphWidget
+                    android:id="@+id/cgwHomeGraph"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                </com.infectapp.presentation.widget.CustomGraphWidget>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout3"
@@ -66,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/home_infected_by"
-                    app:layout_constraintBottom_toTopOf="@+id/textView8"
+                    app:layout_constraintBottom_toTopOf="@+id/tvHomeInfectedByMe"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +87,7 @@
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/tvHomeInfectedByMe"
                     style="@style/HomeTextView24"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -149,7 +162,7 @@
                     android:layout_marginStart="13dp"
                     android:layout_marginEnd="13dp"
                     android:text="@string/home_infected_today"
-                    app:layout_constraintBottom_toTopOf="@+id/textView10"
+                    app:layout_constraintBottom_toTopOf="@+id/tvHomeInfectedByMeToday"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +170,7 @@
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/tvHomeInfectedByMeToday"
                     style="@style/HomeTextView24"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -239,15 +252,15 @@
                 <TextView
                     android:id="@+id/tvHomeInfectedAtDay"
                     style="@style/HomeTextView24"
-                    android:text="@string/home_infected_at_day"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
+                    android:text="@string/home_infected_at_day"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/textView13"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="@+id/textView13"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13"/>
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

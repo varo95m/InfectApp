@@ -64,6 +64,8 @@ dependencies {
 
     implementation 'com.github.carlosmateo89.Ema:ema-android:2.3.0'
     implementation 'com.google.firebase:firebase-dynamic-links:19.1.0'
+
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
 }
 
 repositories {

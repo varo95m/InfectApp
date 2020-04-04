@@ -30,7 +30,14 @@ class ApiInfectAppRepository : Repository {
         mAuth.createUserWithEmailAndPassword(requestCreateAccountModel.email, requestCreateAccountModel.password).addOnSuccessListener {
             mAuth.currentUser?.uid?.let { Uid ->
                 val user = requestCreateAccountModel.registerModel.copy(
-                        creationDate = Date().fromDateToddMMYY()
+                        creationDate = Date().fromDateToddMMYY(),
+                        usersInfected = listOf(InfectedByUserModel(
+                                username = "alvaro",
+                                date = "04/04/2020"
+                        ), InfectedByUserModel(
+                                username = "otro",
+                                date = "04/04/2020"
+                        ))
                 )
                 db.collection(COLLECTION_USERS).document(Uid).set(user).addOnSuccessListener {
                     mAuth.currentUser?.apply {
@@ -104,7 +111,7 @@ class ApiInfectAppRepository : Repository {
     }
 
     override suspend fun getInfectedAtDay(requestInfectedAtDay: RequestInfectedAtDay) {
-        db.collection(COLLECTION_USERS).whereEqualTo(FIELD_CREATION_DATE, "03/04/2020").get().addOnSuccessListener {
+        db.collection(COLLECTION_USERS).whereEqualTo(FIELD_CREATION_DATE, Date().fromDateToddMMYY()).get().addOnSuccessListener {
             requestInfectedAtDay.listener.invoke(it.size())
         }
     }

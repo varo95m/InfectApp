@@ -9,5 +9,6 @@ data class RegisterModel(
         val creationDate: String = STRING_EMPTY,
         val userLink: String = STRING_EMPTY,
         val infectedBy: String = STRING_EMPTY,
-        val country: String = STRING_EMPTY
+        val country: String = STRING_EMPTY,
+        val usersInfected: List<InfectedByUserModel> = emptyList()
 )

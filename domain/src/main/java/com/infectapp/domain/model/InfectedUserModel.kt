@@ -16,6 +16,7 @@ data class InfectedUserModel(
         val username: String = STRING_EMPTY,
         val totalInfectedByUser: Int = INT_ZERO,
         val country: String = STRING_EMPTY,
-        var userPosition: Int = INT_ZERO,
+        val userPosition: Int = INT_ZERO,
+        val usersInfected: List<InfectedByUserModel> = emptyList(),
         var isUserLogged: Boolean = false
 )
