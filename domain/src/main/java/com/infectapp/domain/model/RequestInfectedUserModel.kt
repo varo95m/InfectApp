@@ -15,7 +15,7 @@ import com.infectapp.domain.STRING_EMPTY
  */
 data class InfectedUserModel(
     val username : String = STRING_EMPTY,
-    val totalInfected : Int = INT_ZERO,
+    val totalInfectedByUser : Int = INT_ZERO,
     val country : String = STRING_EMPTY,
     var userPosition : Int = INT_NEGATIVE,
     var isUserLogged : Boolean = false

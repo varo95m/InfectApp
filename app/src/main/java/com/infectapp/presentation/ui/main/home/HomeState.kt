@@ -2,7 +2,7 @@ package com.infectapp.presentation.ui.main.home
 
 import com.carmabs.ema.core.state.EmaBaseState
 import com.infectapp.domain.INT_NEGATIVE
-import com.infectapp.domain.STRING_EMPTY
+import com.infectapp.domain.INT_ZERO
 import com.infectapp.domain.model.InfectedUserModel
 
 
@@ -13,9 +13,10 @@ import com.infectapp.domain.model.InfectedUserModel
  */
 
 data class HomeState(
- var userLogged: InfectedUserModel? = null,
- var totalInfected : Int = INT_NEGATIVE,
- var percetangeByUser : Int = INT_NEGATIVE,
+        val userLogged: InfectedUserModel? = null,
+        val totalInfected: Int = INT_ZERO,
+        val percetangeByUser: Int = INT_ZERO,
+        val userList: MutableList<InfectedUserModel> = mutableListOf()
  var link: String = STRING_EMPTY
 ) : EmaBaseState {
 

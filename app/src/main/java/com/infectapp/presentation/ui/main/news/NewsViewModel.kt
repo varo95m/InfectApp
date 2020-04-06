@@ -1,10 +1,12 @@
 package com.infectapp.presentation.ui.main.news
 
+import com.infectapp.presentation.base.BaseToolbarsViewModel
 import com.infectapp.presentation.base.BaseViewModel
 import com.infectapp.presentation.navigation.MainNavigator
+import com.infectapp.presentation.ui.MainToolbarsViewModel
 
 
-class NewsViewModel : BaseViewModel<NewsState, MainNavigator.Navigation>() {
+class NewsViewModel : BaseToolbarsViewModel<NewsState, MainNavigator.Navigation>() {
 
     override fun onStartFirstTime(statePreloaded: Boolean) {
 
@@ -12,7 +14,11 @@ class NewsViewModel : BaseViewModel<NewsState, MainNavigator.Navigation>() {
 
     override val initialViewState: NewsState = NewsState()
 
-    private fun onActionRefresh(){
+    fun onActionRefresh(){
+
+    }
+
+    override fun onConfigureToolbars(mainToolbarsVm: MainToolbarsViewModel) {
 
     }
 

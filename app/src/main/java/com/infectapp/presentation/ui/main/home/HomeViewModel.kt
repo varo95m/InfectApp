@@ -7,6 +7,10 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.firebase.dynamiclinks.ShortDynamicLink
 import com.infectapp.domain.INT_NEGATIVE
 import com.infectapp.domain.model.InfectedUserModel
+import com.infectapp.domain.model.RequestTotalInfectedModel
+import com.infectapp.domain.model.RequestUserList
+import com.infectapp.domain.usecase.GetInfectedListUseCase
+import com.infectapp.domain.usecase.GetTotalInfectedUseCase
 import com.infectapp.presentation.base.BaseToolbarsViewModel
 import com.infectapp.presentation.navigation.MainNavigator
 import com.infectapp.presentation.ui.MainToolbarsViewModel
@@ -20,8 +24,10 @@ import kotlin.math.roundToInt
  */
 
 class HomeViewModel(
-//    private val getUserLoggedUseCase: GetUserLoggedUseCase,//el usuario logueado
-//    private val getTotalInfectedUseCase: GetTotalInfectedUseCase//el numero total de infectados
+        //private val getUserLoggedUseCase: GetUserLoggedUseCase,//el usuario logueado
+        private val getTotalInfectedUseCase: GetTotalInfectedUseCase,
+        private val getInfectedListUseCase: GetInfectedListUseCase
+
 ) : BaseToolbarsViewModel<HomeState, MainNavigator.Navigation>() {
 
     override val initialViewState: HomeState = HomeState()
@@ -34,7 +40,7 @@ class HomeViewModel(
     override fun onConfigureToolbars(mainToolbarsVm: MainToolbarsViewModel) {
         mainToolbarsVm.onActionUpdateToolbar {
             it.copy(
-                visibility = false
+                    visibility = false
             )
         }
     }
@@ -49,24 +55,40 @@ class HomeViewModel(
                 )
             }
         }
+        getInfectedHomeData()
     }
 
     private fun getInfectedHomeData() {
         executeUseCaseWithException({
-            checkDataState { state ->
-                //                userLoggedInfo = getUserLoggedUseCase.execute(state.userLogged?.username)
-//                totalInfectedInfo = getTotalInfectedUseCase.execute(Unit)
-            }
+            getTotalInfectedUseCase.execute(RequestTotalInfectedModel(listener = ::onResponseTotalInfected))
+            getInfectedListUseCase.execute(RequestUserList(listener = ::onResponseUserList))
         }, { error -> updateToErrorState(error) })
 
         updateToNormalState {
             copy(
-//                userLogged = userLoggedInfo,
-//                totalInfected = totalInfectedInfo,
-//                percetangeByUser = calculatePercentage().roundToInt()
+                    userLogged = userLoggedInfo,
+                    totalInfected = totalInfectedInfo,
+                    percetangeByUser = calculatePercentage().roundToInt()
             )
         }
     }
+
+    private fun onResponseUserList(result: MutableList<InfectedUserModel>) {
+        updateToNormalState {
+            copy(
+                    userList = result
+            )
+        }
+    }
+
+    private fun onResponseTotalInfected(result: Int) {
+        updateToNormalState {
+            copy(
+                    totalInfected = result
+            )
+        }
+    }
+
 
     private fun createDynamicLink(userLoggedInfo: InfectedUserModel): String {
         val dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()

@@ -5,8 +5,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.provider.UserDictionary.Words.APP_ID
-import com.infectapp.data.repository.MockRepository
-import com.infectapp.domain.repository.Repository
 import com.infectapp.domain.usecase.GetInfectedListUseCase
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind

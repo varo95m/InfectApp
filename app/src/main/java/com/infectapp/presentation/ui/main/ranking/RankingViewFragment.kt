@@ -8,12 +8,14 @@ import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.R
 import com.infectapp.domain.model.InfectedUserModel
 import com.infectapp.presentation.base.BaseFragment
+import com.infectapp.presentation.base.BaseToolbarsFragment
 import com.infectapp.presentation.navigation.MainNavigator
+import com.infectapp.presentation.ui.MainToolbarsViewModel
 import kotlinx.android.synthetic.main.fragment_ranking.*
 import org.kodein.di.generic.instance
 
 class RankingViewFragment :
-    BaseFragment<RankingState, RankingViewModel, MainNavigator.Navigation>() {
+        BaseToolbarsFragment<RankingState, RankingViewModel, MainNavigator.Navigation>() {
 
     override val viewModelSeed: RankingViewModel by instance()
 
@@ -23,16 +25,9 @@ class RankingViewFragment :
 
     override val layoutId: Int get() = R.layout.fragment_ranking
 
-
-    override fun onInitialized(viewModel: RankingViewModel) {
-        vm = viewModel
-        refreshRanking.setOnRefreshListener { viewModel.onActionRefresh() }
-        setupRecycler()
-    }
-
     private fun setupRecycler() {
         rvRankingOtherUsers.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
     }
 
 
@@ -40,10 +35,10 @@ class RankingViewFragment :
         data.otherUsersList?.let { otherUserList ->
             rvRankingOtherUsers.adapter?.notifyDataSetChanged() ?: run {
                 rvRankingOtherUsers.adapter =
-                    OtherUserAdapter(
-                        otherUserList.toMutableList(),
-                        ::onActionUserClick
-                    )
+                        OtherUserAdapter(
+                                otherUserList.toMutableList(),
+                                ::onActionUserClick
+                        )
             }
         }
         data.podiumUsersList?.let { podium ->
@@ -79,7 +74,7 @@ class RankingViewFragment :
         }
     }
 
-    private fun onActionUserClick(user : InfectedUserModel){
+    private fun onActionUserClick(user: InfectedUserModel) {
         vm?.onActionUserClick(user)
     }
 
@@ -94,6 +89,12 @@ class RankingViewFragment :
 
     override fun onError(error: Throwable): Boolean {
         return false
+    }
+
+    override fun onInitializedWithToolbarsManagement(viewModel: RankingViewModel, mainToolbarViewModel: MainToolbarsViewModel) {
+        vm = viewModel
+        refreshRanking.setOnRefreshListener { viewModel.onActionRefresh() }
+        setupRecycler()
     }
 
 
