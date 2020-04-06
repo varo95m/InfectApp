@@ -36,6 +36,16 @@
                 app:layout_constraintStart_toStartOf="@+id/iv_home_virus"
                 app:layout_constraintTop_toTopOf="@id/iv_home_virus" />
 
+            <ImageView
+                android:id="@+id/ivHomeShare"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="27dp"
+                android:src="@drawable/ic_group_people"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
                 android:layout_width="0dp"

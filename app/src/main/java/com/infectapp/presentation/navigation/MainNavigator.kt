@@ -1,5 +1,7 @@
 package com.infectapp.presentation.navigation
 
+import android.app.Activity
+import android.content.Intent
 import androidx.navigation.NavController
 import com.carmabs.ema.core.navigator.EmaBaseNavigator
 import com.carmabs.ema.core.navigator.EmaNavigationState
@@ -16,7 +18,10 @@ import com.infectapp.presentation.base.BaseNavigator
  * Date: 2019-12-05
  */
 
-class MainNavigator(override val navController: NavController) : BaseNavigator<MainNavigator.Navigation>() {
+class MainNavigator(
+    override val navController: NavController,
+    private val activity: Activity
+) : BaseNavigator<MainNavigator.Navigation>() {
 
     sealed class Navigation : EmaNavigationState {
         object TabbarHomeButton : MainNavigator.Navigation() {
@@ -46,6 +51,13 @@ class MainNavigator(override val navController: NavController) : BaseNavigator<M
                 nav.toBack()
             }
         }
+
+        class ShareLink(var sendIntent: Intent) : MainNavigator.Navigation() {
+            override fun navigateWith(navigator: EmaBaseNavigator<out EmaNavigationState>) {
+                val nav = navigator as MainNavigator
+                nav.shareLink(sendIntent)
+            }
+        }
     }
 
     private fun toHomeButton() {
@@ -62,5 +74,10 @@ class MainNavigator(override val navController: NavController) : BaseNavigator<M
 
     private fun toBack() {
         navigateBack()
+    }
+
+    private fun shareLink(sendIntent: Intent) {
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        activity.startActivity(shareIntent)
     }
 }
