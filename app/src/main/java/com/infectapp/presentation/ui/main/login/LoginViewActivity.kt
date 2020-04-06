@@ -41,7 +41,7 @@ class LoginViewActivity : BaseActivity() {
                 if (deepLink != null) {
                     val link = deepLink.toString()
                 } else {
-                    Log.d("DYNAMIC_LINK", "getDynamicLink: no link found")
+                    Log.e("DYNAMIC_LINK", "getDynamicLink: no link found")
                 }
                 // [END_EXCLUDE]
             }

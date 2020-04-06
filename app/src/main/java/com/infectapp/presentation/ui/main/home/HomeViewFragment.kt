@@ -37,6 +37,7 @@ class HomeViewFragment : BaseToolbarsFragment<HomeState, HomeViewModel, MainNavi
     override fun onInitializedWithToolbarsManagement(viewModel: HomeViewModel, mainToolbarViewModel: MainToolbarsViewModel) {
         vm = viewModel
         refreshHome.setOnRefreshListener { viewModel.onActionRefresh() }
+        ivHomeShare.setOnClickListener { viewModel.onActionShare() }
     }
 
     override fun onNormal(data: HomeState) {

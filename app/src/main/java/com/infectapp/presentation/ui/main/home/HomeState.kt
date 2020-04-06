@@ -20,7 +20,7 @@ data class HomeState(
         val infectedAtDat: String = STRING_EMPTY,
         val userList: MutableList<InfectedUserModel> = mutableListOf(),
         val userPosition: String = STRING_EMPTY,
-        var link: String = STRING_EMPTY
+        var link: String? = null
 ) : EmaBaseState {
 
 

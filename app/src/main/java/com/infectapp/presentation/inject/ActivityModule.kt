@@ -42,7 +42,7 @@ fun injectionActivityModule(activity: BaseActivity) = Kodein.Module(name = "Acti
 
 //    bind<LoginNavigator>() with singleton { LoginNavigator(instance()) }
 
-    bind<MainNavigator>() with singleton { MainNavigator(instance()) }
+    bind<MainNavigator>() with singleton { MainNavigator(instance(), instance()) }
 
     bind<RegisterStartNavigator>() with singleton { RegisterStartNavigator(instance()) }
 
