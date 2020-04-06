@@ -4,9 +4,5 @@ import com.carmabs.ema.core.state.EmaBaseState
 import com.infectapp.domain.model.InfectedUserModel
 
 data class RankingState(
-    var totalUsersList: List<InfectedUserModel>? = null,
-    var podiumUsersList: List<InfectedUserModel>? = null,
-    var otherUsersList: List<InfectedUserModel>? = null,
-    var userLogged : InfectedUserModel? = null,
-    var otherUserData : InfectedUserModel? = null
+        val usersList: List<InfectedUserModel> = emptyList()
 ) : EmaBaseState

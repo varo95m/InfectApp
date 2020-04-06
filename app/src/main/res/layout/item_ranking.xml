@@ -3,47 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/EditTextGreyBorder"
-    android:background="@drawable/shape_green_border"
-    android:layout_marginTop="15dp"
-    android:layout_width="250dp"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/shape_dark_green_border">
 
     <TextView
-        android:id="@+id/iv_ranking_item_other_user_position"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="3dp"
-        android:background="@color/black"
+        android:id="@+id/tvItemRankingPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_ranking_item_other_user_name"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="4" />
 
     <TextView
-        android:id="@+id/tv_ranking_item_other_user_name"
-        tools:text="userSample"
+        android:id="@+id/tvItemRankingUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:textSize="12sp"
+        android:layout_marginStart="50dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvItemRankingPosition"
+        app:layout_constraintStart_toEndOf="@+id/tvItemRankingPosition"
+        app:layout_constraintTop_toTopOf="@+id/tvItemRankingPosition"
+        tools:text="Alvaro" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_ranking_item_other_user_infected"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/iv_ranking_item_other_user_position"
+        app:layout_constraintEnd_toStartOf="@+id/tvItemRankingInfected"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_ranking_item_other_user_infected"
-        tools:text="123.000"
+        android:id="@+id/tvItemRankingInfected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:textSize="12sp"
+        android:layout_marginEnd="19dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_ranking_item_other_user_name"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="123.000" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

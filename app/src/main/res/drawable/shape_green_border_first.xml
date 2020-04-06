@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:shape="rectangle">
 
-    <solid android:color="@color/lightGreen" />
+    <solid android:color="@color/greenFirst" />
 
     <stroke
         android:width="2dp"
-        android:color="@color/white" />
+        android:color="@color/greenRadioactive" />
 
     <corners android:radius="8dp" />
 </shape>

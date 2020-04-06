@@ -84,7 +84,7 @@ class ApiInfectAppRepository : Repository {
 
     override suspend fun getInfectedList(requestUserList: RequestUserList) {
         val userList = mutableListOf<InfectedUserModel>()
-        db.collection(COLLECTION_USERS).get().addOnSuccessListener {
+        db.collection(COLLECTION_USERS).orderBy("totalInfectedByUser").get().addOnSuccessListener {
             for (document in it) {
                 userList.add(document.toObject(InfectedUserModel::class.java))
             }
