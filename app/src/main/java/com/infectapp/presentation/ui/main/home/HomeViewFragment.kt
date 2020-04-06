@@ -36,9 +36,9 @@ class HomeViewFragment : BaseToolbarsFragment<HomeState, HomeViewModel, MainNavi
     }
 
     override fun onNormal(data: HomeState) {
-        tv_home_total_infected.text = data.totalInfected.toString()
-//        tv_home_has_infected.text = String.format(getString(R.string.home_has_infected_users), data.userLogged?.totalInfectedByUser, data.totalInfected)
-//        tv_home_percentage.text = data.percetangeByUser.toString()
+        tvHomeTotalInfected.text = data.totalInfected
+        tvHomePosition.text = data.userPosition
+        tvHomeInfectedAtDay.text = getString(R.string.home_infected_at_day, data.infectedAtDat)
         loadingDialog.hide()
     }
 

@@ -1,9 +1,6 @@
 package com.infectapp.data.repository
 
-import com.infectapp.domain.model.RequestCreateAccountModel
-import com.infectapp.domain.model.RequestLoginModel
-import com.infectapp.domain.model.RequestTotalInfectedModel
-import com.infectapp.domain.model.RequestUserList
+import com.infectapp.domain.model.*
 import com.infectapp.domain.repository.Repository
 
 class MockRepository : Repository {
@@ -16,5 +13,9 @@ class MockRepository : Repository {
     override suspend fun getTotalInfected(requestTotalInfectedModel: RequestTotalInfectedModel) {
         requestTotalInfectedModel.listener.invoke(10)
     }
+
+    override suspend fun getCurrentUser(requestCurrentUser: RequestCurrentUser) {}
+
+    override suspend fun getInfectedAtDay(requestInfectedAtDay: RequestInfectedAtDay) {}
 
 }

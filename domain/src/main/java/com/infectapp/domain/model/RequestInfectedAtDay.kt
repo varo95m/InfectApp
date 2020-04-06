@@ -1,5 +1,7 @@
 package com.infectapp.domain.model
 
+import com.infectapp.domain.STRING_EMPTY
+
 /**
  * <p>
  * Copyright (c) 2020, Musketeers Inc. All rights reserved.
@@ -10,7 +12,7 @@ package com.infectapp.domain.model
  * Date: 2020-01-07
  */
 
-data class RequestUserList(
-        val listener: (MutableList<InfectedUserModel>) -> Unit,
-        val errorListener: (Unit) -> Unit
+data class RequestInfectedAtDay(
+    val listener: (Int) -> Unit,
+    val errorListener: (Unit) -> Unit
 )

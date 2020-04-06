@@ -106,7 +106,7 @@
                     android:layout_marginStart="13dp"
                     android:layout_marginEnd="13dp"
                     android:text="@string/home_infected_total"
-                    app:layout_constraintBottom_toTopOf="@+id/textView6"
+                    app:layout_constraintBottom_toTopOf="@+id/tvHomeTotalInfected"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +114,7 @@
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/tvHomeTotalInfected"
                     style="@style/HomeTextView24"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
                     android:layout_marginStart="13dp"
                     android:layout_marginEnd="13dp"
                     android:text="@string/home_position"
-                    app:layout_constraintBottom_toTopOf="@+id/textView12"
+                    app:layout_constraintBottom_toTopOf="@+id/tvHomePosition"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -197,7 +197,7 @@
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/tvHomePosition"
                     style="@style/HomeTextView24"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -229,7 +229,7 @@
                     android:layout_marginStart="13dp"
                     android:layout_marginEnd="13dp"
                     android:text="@string/home_velocity"
-                    app:layout_constraintBottom_toTopOf="@+id/textView14"
+                    app:layout_constraintBottom_toTopOf="@+id/tvHomeInfectedAtDay"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -237,8 +237,9 @@
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/tvHomeInfectedAtDay"
                     style="@style/HomeTextView24"
+                    android:text="@string/home_infected_at_day"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -246,8 +247,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/textView13"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="@+id/textView13"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13"
-                    tools:text="236 al día" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView13"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -9,12 +9,15 @@ import com.infectapp.domain.INT_NEGATIVE
 import com.infectapp.domain.model.InfectedUserModel
 import com.infectapp.domain.model.RequestTotalInfectedModel
 import com.infectapp.domain.model.RequestUserList
+import com.infectapp.domain.INT_ONE
+import com.infectapp.domain.model.*
+import com.infectapp.domain.usecase.GetCurrentUserUseCase
+import com.infectapp.domain.usecase.GetInfectedAtDayUseCase
 import com.infectapp.domain.usecase.GetInfectedListUseCase
 import com.infectapp.domain.usecase.GetTotalInfectedUseCase
 import com.infectapp.presentation.base.BaseToolbarsViewModel
 import com.infectapp.presentation.navigation.MainNavigator
 import com.infectapp.presentation.ui.MainToolbarsViewModel
-import kotlin.math.roundToInt
 
 
 /**
@@ -24,16 +27,16 @@ import kotlin.math.roundToInt
  */
 
 class HomeViewModel(
-        //private val getUserLoggedUseCase: GetUserLoggedUseCase,//el usuario logueado
         private val getTotalInfectedUseCase: GetTotalInfectedUseCase,
-        private val getInfectedListUseCase: GetInfectedListUseCase
+        private val getInfectedListUseCase: GetInfectedListUseCase,
+        private val getCurrentUserUseCase: GetCurrentUserUseCase,
+        private val getInfectedAtDayUseCase: GetInfectedAtDayUseCase
 
 ) : BaseToolbarsViewModel<HomeState, MainNavigator.Navigation>() {
 
     override val initialViewState: HomeState = HomeState()
 
     private var userLoggedInfo = InfectedUserModel()
-    private var totalInfectedInfo: Int = INT_NEGATIVE
 
     private var link: Uri? = null
 
@@ -61,30 +64,54 @@ class HomeViewModel(
     private fun getInfectedHomeData() {
         executeUseCaseWithException({
             getTotalInfectedUseCase.execute(RequestTotalInfectedModel(listener = ::onResponseTotalInfected))
-            getInfectedListUseCase.execute(RequestUserList(listener = ::onResponseUserList))
         }, { error -> updateToErrorState(error) })
-
-        updateToNormalState {
-            copy(
-                    userLogged = userLoggedInfo,
-                    totalInfected = totalInfectedInfo,
-                    percetangeByUser = calculatePercentage().roundToInt()
-            )
-        }
     }
 
     private fun onResponseUserList(result: MutableList<InfectedUserModel>) {
-        updateToNormalState {
+        updateDataState {
+            copy(userList = result)
+        }
+        checkDataState { state ->
+            state.currentUser?.let {
+                updateToNormalState {
+                    copy(
+                            userPosition = getUserPosition(state.userList, it)
+                    )
+                }
+            }
+        }
+        executeUseCase { getInfectedAtDayUseCase.execute(RequestInfectedAtDay(listener = ::onResponseInfectedAtDay, errorListener = ::onError)) }
+    }
+
+    private fun getUserPosition(result: MutableList<InfectedUserModel>, currentUser: InfectedUserModel): String {
+        return (result.indexOf(currentUser) + INT_ONE).toString()
+    }
+
+    private fun onResponseCurrentUser(result: InfectedUserModel) {
+        updateDataState {
             copy(
-                    userList = result
+                    currentUser = result
             )
         }
+        executeUseCase { getInfectedListUseCase.execute(RequestUserList(listener = ::onResponseUserList, errorListener = ::onError)) }
+    }
+
+    private fun onError(result: Unit) {
     }
 
     private fun onResponseTotalInfected(result: Int) {
+        updateDataState {
+            copy(
+                    totalInfected = result.toString()
+            )
+        }
+        executeUseCase { getCurrentUserUseCase.execute(RequestCurrentUser(listener = ::onResponseCurrentUser, errorListener = ::onError)) }
+    }
+
+    private fun onResponseInfectedAtDay(result: Int) {
         updateToNormalState {
             copy(
-                    totalInfected = result
+                    infectedAtDat = result.toString()
             )
         }
     }
@@ -100,13 +127,6 @@ class HomeViewModel(
 
         return dynamicLink.uri.toString()
     }
-
-//    private fun calculatePercentage(): Double {
-//        return if (totalInfectedInfo != 0)
-//            ((userLoggedInfo.totalInfectedByUser.toDouble() / totalInfectedInfo.toDouble()) * 100)
-//        else
-//            DOUBLE_NEGATIVE
-//    }
 
     fun onActionRefresh() {
         getInfectedHomeData()

@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.provider.UserDictionary.Words.APP_ID
+import com.infectapp.domain.usecase.GetCurrentUserUseCase
+import com.infectapp.domain.usecase.GetInfectedAtDayUseCase
 import com.infectapp.domain.usecase.GetInfectedListUseCase
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
@@ -33,5 +35,8 @@ fun generateAppModule(app: Application) = Kodein.Module(name = "AppModule") {
 
     bind<GetInfectedListUseCase>() with singleton { GetInfectedListUseCase(instance()) }
 
+    bind<GetCurrentUserUseCase>() with singleton { GetCurrentUserUseCase(instance()) }
+
+    bind<GetInfectedAtDayUseCase>() with singleton { GetInfectedAtDayUseCase(instance()) }
 
 }

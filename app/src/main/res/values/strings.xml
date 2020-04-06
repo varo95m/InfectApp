@@ -35,4 +35,5 @@
     <string name="home_infected_today">Infectados hoy</string>
     <string name="home_position">Tu posicion</string>
     <string name="home_velocity">Velocidad actual de propagacion</string>
+    <string name="home_infected_at_day">%s al día</string>
 </resources>
