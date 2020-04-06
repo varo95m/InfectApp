@@ -11,7 +11,15 @@
     <fragment
         android:id="@+id/rankingViewFragment"
         android:name="com.infectapp.presentation.ui.main.ranking.RankingViewFragment"
-        android:label="RankingViewFragment" />
+        android:label="RankingViewFragment" >
+        <action
+            android:id="@+id/action_rankingViewFragment_to_searchViewFragment"
+            app:destination="@id/searchViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchViewFragment"
+        android:name="com.infectapp.presentation.ui.main.ranking.search.SearchViewFragment"
+        android:label="SearchViewFragment" />
     <action
         android:id="@+id/action_global_newsViewFragment"
         app:destination="@id/newsViewFragment" />

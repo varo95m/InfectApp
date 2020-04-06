@@ -20,6 +20,7 @@ class NewsViewFragment : BaseToolbarsFragment<NewsState, NewsViewModel, MainNavi
     override val layoutId: Int get() = R.layout.fragment_news
 
     override fun onNormal(data: NewsState) {
+        refreshNews.isRefreshing = false
     }
 
 

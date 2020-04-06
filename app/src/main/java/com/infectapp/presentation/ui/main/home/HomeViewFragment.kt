@@ -50,7 +50,7 @@ class HomeViewFragment : BaseToolbarsFragment<HomeState, HomeViewModel, MainNavi
         }
         tvHomeInfectedAtDay.text = getString(R.string.home_infected_at_day, data.infectedAtDat)
         loadingDialog.hide()
-
+        refreshHome.isRefreshing = false
     }
 
     private fun setGraph(usersInfected: List<InfectedByUserModel>) {

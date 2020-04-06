@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.item_ranking.view.*
  *
  * @author <a href="mailto:jorge.valino@babel.es">Jorge Valiño Guerra</a>
  */
-class RankingUserAdapter(
+class RankingOtherUserAdapter(
         override val listItems: MutableList<InfectedUserModel>,
         private val userListener: (InfectedUserModel) -> Unit
 
@@ -28,7 +28,7 @@ class RankingUserAdapter(
             userListener.invoke(item)
         }
         tvItemRankingUsername.text = item.username
-        tvItemRankingPosition.text = (listItems.indexOf(item) + INT_ONE).toString()
+        tvItemRankingPosition.text = item.userPosition.toString()
         tvItemRankingInfected.text = item.totalInfectedByUser.toString()
     }
 

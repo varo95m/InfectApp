@@ -45,6 +45,13 @@ class MainNavigator(
             }
         }
 
+        object SearchFromRanking : MainNavigator.Navigation() {
+            override fun navigateWith(navigator: EmaBaseNavigator<out EmaNavigationState>) {
+                val nav = navigator as MainNavigator
+                nav.toSearchFromRanking()
+            }
+        }
+
         object GoBack : MainNavigator.Navigation() {
             override fun navigateWith(navigator: EmaBaseNavigator<out EmaNavigationState>) {
                 val nav = navigator as MainNavigator
@@ -70,6 +77,10 @@ class MainNavigator(
 
     private fun toRankingButton() {
         navigateWithAction(R.id.action_global_rankingViewFragment)
+    }
+
+    private fun toSearchFromRanking() {
+        navigateWithAction(R.id.action_rankingViewFragment_to_searchViewFragment)
     }
 
     private fun toBack() {
