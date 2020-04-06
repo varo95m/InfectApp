@@ -28,4 +28,12 @@
     <string name="register_password_button">Siguiente</string>
     <string name="register_password_min_lenght">La contraseña debe tener al menos 6 caracteres</string>
     <string name="register_password_equal">Las contraseñas no coinciden</string>
+
+    <!-- Home-->
+    <string name="home_infected_by">Infectados por ti</string>
+    <string name="home_infected_total">Total infectados</string>
+    <string name="home_infected_today">Infectados hoy</string>
+    <string name="home_position">Tu posicion</string>
+    <string name="home_velocity">Velocidad actual de propagacion</string>
+    <string name="home_infected_at_day">%s al día</string>
 </resources>

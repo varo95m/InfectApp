@@ -4,6 +4,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.infectapp.data.COLLECTION_USERS
+import com.infectapp.data.FIELD_CREATION_DATE
 import com.infectapp.data.FIELD_USER
 import com.infectapp.domain.INT_ZERO
 import com.infectapp.domain.fromDateToddMMYY
@@ -29,7 +30,14 @@ class ApiInfectAppRepository : Repository {
         mAuth.createUserWithEmailAndPassword(requestCreateAccountModel.email, requestCreateAccountModel.password).addOnSuccessListener {
             mAuth.currentUser?.uid?.let { Uid ->
                 val user = requestCreateAccountModel.registerModel.copy(
-                        creationDate = Date().fromDateToddMMYY()
+                        creationDate = Date().fromDateToddMMYY(),
+                        usersInfected = listOf(InfectedByUserModel(
+                                username = "alvaro",
+                                date = "04/04/2020"
+                        ), InfectedByUserModel(
+                                username = "otro",
+                                date = "04/04/2020"
+                        ))
                 )
                 db.collection(COLLECTION_USERS).document(Uid).set(user).addOnSuccessListener {
                     mAuth.currentUser?.apply {
@@ -87,6 +95,24 @@ class ApiInfectAppRepository : Repository {
     override suspend fun getTotalInfected(requestTotalInfectedModel: RequestTotalInfectedModel) {
         db.collection(COLLECTION_USERS).get().addOnSuccessListener {
             requestTotalInfectedModel.listener.invoke(it.size())
+        }
+    }
+
+    override suspend fun getCurrentUser(requestCurrentUser: RequestCurrentUser) {
+        mAuth.currentUser?.let {
+            db.collection(COLLECTION_USERS).document(it.uid).get().addOnSuccessListener {
+                it.toObject(InfectedUserModel::class.java)?.let { CurrentUser ->
+                    requestCurrentUser.listener.invoke(CurrentUser)
+                }
+            }.addOnFailureListener {
+                requestCurrentUser.errorListener.invoke(Unit)
+            }
+        }
+    }
+
+    override suspend fun getInfectedAtDay(requestInfectedAtDay: RequestInfectedAtDay) {
+        db.collection(COLLECTION_USERS).whereEqualTo(FIELD_CREATION_DATE, Date().fromDateToddMMYY()).get().addOnSuccessListener {
+            requestInfectedAtDay.listener.invoke(it.size())
         }
     }
 }

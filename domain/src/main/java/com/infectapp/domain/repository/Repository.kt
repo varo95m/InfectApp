@@ -11,4 +11,8 @@ interface Repository {
     suspend fun getInfectedList(requestUserList: RequestUserList)
 
     suspend fun getTotalInfected(requestTotalInfectedModel: RequestTotalInfectedModel)
+
+    suspend fun getCurrentUser(requestCurrentUser: RequestCurrentUser)
+
+    suspend fun getInfectedAtDay(requestInfectedAtDay: RequestInfectedAtDay)
 }
