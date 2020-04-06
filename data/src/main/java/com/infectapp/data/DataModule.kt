@@ -3,6 +3,7 @@ package com.infectapp.data
 import com.infectapp.data.repository.ApiInfectAppRepository
 import com.infectapp.domain.repository.Repository
 import com.infectapp.domain.usecase.CreateAccountUseCase
+import com.infectapp.domain.usecase.GetTotalInfectedUseCase
 import com.infectapp.domain.usecase.LoginUseCase
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
@@ -16,5 +17,7 @@ fun generateDataModule() = Kodein.Module(name = "AppDataModule") {
     bind<CreateAccountUseCase>() with singleton { CreateAccountUseCase(instance()) }
 
     bind<LoginUseCase>() with singleton { LoginUseCase(instance()) }
+
+    bind<GetTotalInfectedUseCase>() with singleton { GetTotalInfectedUseCase(instance()) }
 
 }

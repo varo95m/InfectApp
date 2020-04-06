@@ -7,10 +7,7 @@ import com.infectapp.data.COLLECTION_USERS
 import com.infectapp.data.FIELD_USER
 import com.infectapp.domain.INT_ZERO
 import com.infectapp.domain.fromDateToddMMYY
-import com.infectapp.domain.model.InfectedUserModel
-import com.infectapp.domain.model.RequestCreateAccountModel
-import com.infectapp.domain.model.RequestLoginModel
-import com.infectapp.domain.model.UserModel
+import com.infectapp.domain.model.*
 import com.infectapp.domain.repository.Repository
 import java.util.*
 
@@ -77,7 +74,19 @@ class ApiInfectAppRepository : Repository {
         }
     }
 
-    override suspend fun getInfectedList(): List<InfectedUserModel> {
-        return listOf()
+    override suspend fun getInfectedList(requestUserList: RequestUserList) {
+        val userList = mutableListOf<InfectedUserModel>()
+        db.collection(COLLECTION_USERS).get().addOnSuccessListener {
+            for (document in it) {
+                userList.add(document.toObject(InfectedUserModel::class.java))
+            }
+            requestUserList.listener.invoke(userList)
+        }
+    }
+
+    override suspend fun getTotalInfected(requestTotalInfectedModel: RequestTotalInfectedModel) {
+        db.collection(COLLECTION_USERS).get().addOnSuccessListener {
+            requestTotalInfectedModel.listener.invoke(it.size())
+        }
     }
 }

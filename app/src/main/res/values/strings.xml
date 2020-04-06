@@ -2,7 +2,7 @@
     <string name="dialog_loading_text">Cargando. Danos unos segundos...</string>
 
 
-    <string name="home_has_infected_users">%s de %s usuarios</string>
+    <string name="home_has_infected_users">Has infectado a %s de %s usuarios</string>
     <string name="home_has_infected_percentage">%s% del total</string>
     <!--Tabbar-->
 

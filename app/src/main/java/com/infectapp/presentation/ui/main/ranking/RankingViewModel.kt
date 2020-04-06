@@ -2,15 +2,17 @@ package com.infectapp.presentation.ui.main.ranking
 
 import com.infectapp.domain.INT_NEGATIVE
 import com.infectapp.domain.model.InfectedUserModel
+import com.infectapp.presentation.base.BaseToolbarsViewModel
 import com.infectapp.presentation.base.BaseViewModel
 import com.infectapp.presentation.navigation.MainNavigator
+import com.infectapp.presentation.ui.MainToolbarsViewModel
 
 
 class RankingViewModel(
-//    private val getTotalUserListUseCase: GetTotalUserListUseCase,//todos los usuarios pal ranking
-//    private val getOtherUserDataUseCase: GetOtherUserDataUseCase,//un usuario concreto
-//    private val getUserLoggedUseCase: GetUserLoggedUseCase//el usuario logueado el cual alokme deberíamos obtener desde la home
-) : BaseViewModel<RankingState, MainNavigator.Navigation>() {
+   // private val getTotalUserListUseCase: GetTotalUserListUseCase//todos los usuarios pal ranking
+   // private val getOtherUserDataUseCase: GetOtherUserDataUseCase,//un usuario concreto
+    //private val getUserLoggedUseCase: GetUserLoggedUseCase//el usuario logueado el cual alokme deberíamos obtener desde la home
+) : BaseToolbarsViewModel<RankingState, MainNavigator.Navigation>() {
 
     override val initialViewState: RankingState = RankingState()
 
@@ -28,8 +30,6 @@ class RankingViewModel(
 
     private fun getInfectedRankingData() {
         executeUseCaseWithException({
-//            totalUsersListSorted =
-//                getTotalUserListUseCase.execute(Unit).sortedByDescending { it.totalInfectedByUser }
             totalUsersListSorted.forEach {
                 it.userPosition = position
                 position += 1
@@ -47,7 +47,7 @@ class RankingViewModel(
                 totalUsersList = totalUsersListSorted,
                 podiumUsersList = podiumList,
                 otherUsersList = otherUsersListSorted
-//                userLogged = getUserLoggedUseCase.execute(Unit)
+                //userLogged = getUserLoggedUseCase.execute(Unit)
             )
         }
     }
@@ -69,12 +69,16 @@ class RankingViewModel(
 
     fun onActionUserClick(user: InfectedUserModel) {
         executeUseCaseWithException({
-//            val otherUser = getOtherUserDataUseCase.execute(user)
+            //val otherUser = getOtherUserDataUseCase.execute(user)
             updateToNormalState {
                 copy(
-//                    otherUserData = otherUser
+                    //otherUserData = otherUser
                 )
             }
         }, { error -> updateToErrorState(error) })
+    }
+
+    override fun onConfigureToolbars(mainToolbarsVm: MainToolbarsViewModel) {
+
     }
 }

@@ -4,7 +4,6 @@ import com.carmabs.ema.core.dialog.EmaDialogProvider
 import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.R
 import com.infectapp.presentation.KODEIN_TAG_DIALOG_LOADING
-import com.infectapp.presentation.base.BaseFragment
 import com.infectapp.presentation.base.BaseToolbarsFragment
 import com.infectapp.presentation.navigation.MainNavigator
 import com.infectapp.presentation.ui.MainToolbarsViewModel
@@ -18,7 +17,7 @@ import org.kodein.di.generic.instance
  * @author <a href="mailto:jorgevguerra@hotmail.com">Jorge Valiño Guerra</a>
  */
 
-class HomeViewFragment: BaseToolbarsFragment<HomeState, HomeViewModel, MainNavigator.Navigation>() {
+class HomeViewFragment : BaseToolbarsFragment<HomeState, HomeViewModel, MainNavigator.Navigation>() {
 
     override val viewModelSeed: HomeViewModel by instance()
 
@@ -38,7 +37,7 @@ class HomeViewFragment: BaseToolbarsFragment<HomeState, HomeViewModel, MainNavig
 
     override fun onNormal(data: HomeState) {
         tv_home_total_infected.text = data.totalInfected.toString()
-//        tv_home_has_infected.text = String.format(getString(R.string.home_has_infected_users), data.userLogged?.totalInfectedByUser, data.totalInfected)
+        tv_home_has_infected.text = String.format(getString(R.string.home_has_infected_users), 1, data.totalInfected)
         tv_home_percentage.text = data.percetangeByUser.toString()
         ivHomeLinkToInfect.text = data.link
         loadingDialog.hide()

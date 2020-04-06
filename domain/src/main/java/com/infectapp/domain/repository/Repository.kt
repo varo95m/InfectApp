@@ -1,8 +1,6 @@
 package com.infectapp.domain.repository
 
-import com.infectapp.domain.model.InfectedUserModel
-import com.infectapp.domain.model.RequestCreateAccountModel
-import com.infectapp.domain.model.RequestLoginModel
+import com.infectapp.domain.model.*
 
 interface Repository {
 
@@ -10,5 +8,7 @@ interface Repository {
 
     suspend fun login(requestLoginModel: RequestLoginModel)
 
-    suspend fun getInfectedList(): List<InfectedUserModel>
+    suspend fun getInfectedList(requestUserList: RequestUserList)
+
+    suspend fun getTotalInfected(requestTotalInfectedModel: RequestTotalInfectedModel)
 }
