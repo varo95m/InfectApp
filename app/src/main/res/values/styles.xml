@@ -41,5 +41,14 @@
         <item name="android:stateListAnimator">@null</item>
         <item name="android:elevation">5dp</item>
     </style>
-
+    <style name="HomeTextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="HomeTextView24">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24sp</item>
+    </style>
 </resources>

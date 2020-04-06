@@ -12,6 +12,9 @@
 
     <color name="greenRadioactive">#05F10F</color>
     <color name="grey">#A6A6A6</color>
-    <color name="darkGreen">#027305</color>
+    <color name="darkGreen">#0B460D</color>
+    <color name="lightGreen">#51943E</color>
     <color name="redError">#870000</color>
+
+    <color name="purple">#663B97</color>
 </resources>
