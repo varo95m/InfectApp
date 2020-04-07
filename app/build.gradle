@@ -66,6 +66,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-dynamic-links:19.1.0'
 
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
 
 repositories {

@@ -7,7 +7,7 @@
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="riffle_green">#3d3d3d</color>
+    <color name="greyView">#3d3d3d</color>
     <color name="munsell">#f2f2f2</color>
 
     <color name="greenRadioactive">#05F10F</color>
@@ -15,6 +15,8 @@
     <color name="darkGreen">#0B460D</color>
     <color name="lightGreen">#51943E</color>
     <color name="redError">#870000</color>
+    <color name="pineGreen">#0b4634</color>
+    <color name="veryDarkGreen">#020e0a</color>
 
     <color name="purple">#663B97</color>
 </resources>

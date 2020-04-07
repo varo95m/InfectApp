@@ -18,4 +18,6 @@ class MockRepository : Repository {
 
     override suspend fun getInfectedAtDay(requestInfectedAtDay: RequestInfectedAtDay) {}
 
+    override suspend fun getNewsList(requestNewsList: RequestNewsList) {}
+
 }

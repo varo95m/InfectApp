@@ -3,6 +3,7 @@ package com.infectapp.data.repository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
+import com.infectapp.data.COLLECTION_NEWS
 import com.infectapp.data.COLLECTION_USERS
 import com.infectapp.data.FIELD_CREATION_DATE
 import com.infectapp.data.FIELD_USER
@@ -113,6 +114,16 @@ class ApiInfectAppRepository : Repository {
     override suspend fun getInfectedAtDay(requestInfectedAtDay: RequestInfectedAtDay) {
         db.collection(COLLECTION_USERS).whereEqualTo(FIELD_CREATION_DATE, Date().fromDateToddMMYY()).get().addOnSuccessListener {
             requestInfectedAtDay.listener.invoke(it.size())
+        }
+    }
+
+    override suspend fun getNewsList(requestNewsList: RequestNewsList) {
+        val newsList = mutableListOf<NewModel>()
+        db.collection(COLLECTION_NEWS).get().addOnSuccessListener {
+            for (document in it) {
+                newsList.add(document.toObject(NewModel::class.java))
+            }
+            requestNewsList.listener.invoke(newsList)
         }
     }
 }

@@ -8,6 +8,7 @@ import android.provider.UserDictionary.Words.APP_ID
 import com.infectapp.domain.usecase.GetCurrentUserUseCase
 import com.infectapp.domain.usecase.GetInfectedAtDayUseCase
 import com.infectapp.domain.usecase.GetInfectedListUseCase
+import com.infectapp.domain.usecase.GetNewsListUseCase
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -38,5 +39,7 @@ fun generateAppModule(app: Application) = Kodein.Module(name = "AppModule") {
     bind<GetCurrentUserUseCase>() with singleton { GetCurrentUserUseCase(instance()) }
 
     bind<GetInfectedAtDayUseCase>() with singleton { GetInfectedAtDayUseCase(instance()) }
+
+    bind<GetNewsListUseCase>() with singleton { GetNewsListUseCase(instance()) }
 
 }

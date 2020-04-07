@@ -15,4 +15,6 @@ interface Repository {
     suspend fun getCurrentUser(requestCurrentUser: RequestCurrentUser)
 
     suspend fun getInfectedAtDay(requestInfectedAtDay: RequestInfectedAtDay)
+
+    suspend fun getNewsList(requestNewsList: RequestNewsList)
 }

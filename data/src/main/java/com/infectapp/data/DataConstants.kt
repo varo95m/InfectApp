@@ -13,7 +13,8 @@ package com.infectapp.data
 const val TIMEOUT_RETROFIT = 90L
 
 const val COLLECTION_USERS = "USERS"
-const val FIELD_USER = "username"
+const val COLLECTION_NEWS = "NEWS"
 
+const val FIELD_USER = "username"
 const val FIELD_CREATION_DATE = "creationDate"
 

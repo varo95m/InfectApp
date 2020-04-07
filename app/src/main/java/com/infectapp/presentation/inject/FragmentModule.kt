@@ -35,7 +35,7 @@ fun generateFragmentModule(fragment: Fragment) = Kodein.Module(name = "FragmentM
 
     bind<HomeViewModel>() with provider { HomeViewModel(instance(), instance(), instance(), instance()) }
 
-    bind<NewsViewModel>() with provider { NewsViewModel() }
+    bind<NewsViewModel>() with provider { NewsViewModel(instance()) }
 
     bind<RankingViewModel>() with provider { RankingViewModel(
     ) }
