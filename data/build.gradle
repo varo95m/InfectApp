@@ -80,6 +80,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.3.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.1'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    //DB
+    kapt dataDependencies.roomCompiler
+    implementation dataDependencies.room
+    implementation dataDependencies.roomKt
+    debugImplementation dataDependencies.debugDb
 }
 
 repositories {

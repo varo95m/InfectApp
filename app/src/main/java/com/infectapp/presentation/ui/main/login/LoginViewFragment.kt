@@ -1,5 +1,6 @@
 package com.infectapp.presentation.ui.main.login
 
+import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
@@ -14,7 +15,6 @@ import com.infectapp.presentation.dialog.simple.SimpleDialogData
 import com.infectapp.presentation.ui.MainToolbarsViewModel
 import com.infectapp.presentation.ui.main.login.LoginViewModel.Companion.FIELDS_EMPTY_DIALOG
 import com.infectapp.presentation.ui.main.login.LoginViewModel.Companion.INVALID_FIELDS_DIALOG
-import com.musketeers.richsnet.presentation.ui.login.LoginState
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.kodein.di.generic.instance
 
@@ -40,6 +40,7 @@ class LoginViewFragment : BaseToolbarsFragment<LoginState, LoginViewModel, Login
     }
 
     override fun onNormal(data: LoginState) {
+        tvLoginInfectedByUser.text = data.infectedByUser
         loadingDialog.hide()
         simpleDialog.hide()
     }

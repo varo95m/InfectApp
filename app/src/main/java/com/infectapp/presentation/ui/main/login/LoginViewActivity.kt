@@ -10,14 +10,21 @@ package com.infectapp.presentation.ui.main.login
  * Date: 2019-12-04
  */
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.infectapp.R
+import com.infectapp.data.repository.RoomLocalStorageRepository
 import com.infectapp.domain.STRING_EMPTY
 import com.infectapp.presentation.base.BaseActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class LoginViewActivity : BaseActivity() {
@@ -26,32 +33,6 @@ class LoginViewActivity : BaseActivity() {
 
     override fun onCreateActivity(savedInstanceState: Bundle?) {
         super.onCreateActivity(savedInstanceState)
-
-        FirebaseDynamicLinks.getInstance()
-            .getDynamicLink(intent)
-            .addOnSuccessListener(this) { pendingDynamicLinkData ->
-                // Get deep link from result (may be null if no link is found)
-                var deepLink: Uri? = null
-                if (pendingDynamicLinkData != null) {
-                    deepLink = pendingDynamicLinkData.link
-                }
-
-                // [START_EXCLUDE]
-                // Display deep link in the UI
-                if (deepLink != null) {
-                    val link = deepLink.toString()
-                } else {
-                    Log.e("DYNAMIC_LINK", "getDynamicLink: no link found")
-                }
-                // [END_EXCLUDE]
-            }
-            .addOnFailureListener(this) { e ->
-                Log.w(
-                    "DYNAMIC_LINK",
-                    "getDynamicLink:onFailure",
-                    e
-                )
-            }
     }
 
     override fun provideFixedToolbarTitle(): String? = STRING_EMPTY
