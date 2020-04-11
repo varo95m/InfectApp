@@ -1,14 +1,15 @@
 package com.infectapp.presentation.ui.main.login
 
 import com.carmabs.ema.core.state.EmaExtraData
-import com.infectapp.domain.model.RequestLoginModel
-import com.infectapp.domain.usecase.CreateAccountUseCase
+import com.infectapp.domain.usecase.GetInfectedByUserUseCase
 import com.infectapp.domain.usecase.LoginUseCase
 import com.infectapp.presentation.base.BaseToolbarsViewModel
 import com.infectapp.presentation.ui.MainToolbarsViewModel
-import com.musketeers.richsnet.presentation.ui.login.LoginState
 
-class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseToolbarsViewModel<LoginState, LoginNavigator.Navigation>() {
+class LoginViewModel(
+    private val loginUseCase: LoginUseCase,
+    private val getInfectedByUserUseCase: GetInfectedByUserUseCase
+) : BaseToolbarsViewModel<LoginState, LoginNavigator.Navigation>() {
 
     companion object {
         const val INVALID_FIELDS_DIALOG = 1
@@ -16,7 +17,19 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseToolbarsViewM
     }
 
     override fun onConfigureToolbars(mainToolbarsVm: MainToolbarsViewModel) {
+        executeUseCaseWithException({
+            val x = getInfectedByUserUseCase.execute(Unit)
+            updateToNormalState {
+                copy(
+                    infectedByUser = x
+                )
+            }
+        }, { error ->
+            updateToErrorState(error)
+        })
+
     }
+
 
     fun onActionRegister() {
         navigate(LoginNavigator.Navigation.RegisterStartFromLogin)
@@ -26,7 +39,7 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseToolbarsViewM
     fun onActionUserChange(string: String) {
         updateDataState {
             copy(
-                    user = string
+                user = string
             )
         }
     }
@@ -34,7 +47,7 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseToolbarsViewM
     fun onActionPasswordChange(string: String) {
         updateDataState {
             copy(
-                    password = string
+                password = string
             )
         }
     }

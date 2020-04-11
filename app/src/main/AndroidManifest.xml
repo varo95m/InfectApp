@@ -30,10 +30,11 @@
 
         <activity
             android:name=".presentation.ui.main.login.LoginViewActivity"
-            android:windowSoftInputMode="adjustResize" >
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="infectgame.com"
                     android:scheme="https" />
@@ -43,7 +44,7 @@
         <activity
             android:name="com.infectapp.presentation.ui.MainToolbarsViewActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

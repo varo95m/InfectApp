@@ -14,6 +14,10 @@ project.ext {
 
     javaxAnnotationVersion = '1.0'
 
+    roomVersion = '2.1.0'
+
+    debugDbVersion = "1.0.6"
+
     supportVersion = '28.0.0'
 
     gsonVersion = '2.8.5'
@@ -157,6 +161,10 @@ project.ext {
             kotlin                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:" + project.kotlinVersion,
             kodein                   : "org.kodein.di:kodein-di-generic-jvm:" + project.kodeinVersion,
             kodeinAndroid            : "org.kodein.di:kodein-di-framework-android-x:" + project.kodeinVersion,
+            room                     : "androidx.room:room-runtime:" + project.roomVersion,
+            roomKt                   : "androidx.room:room-ktx:" + project.roomVersion,
+            roomCompiler             : "androidx.room:room-compiler:" + project.roomVersion,
+            debugDb                  : "com.amitshekhar.android:debug-db:" + project.debugDbVersion,
             retrofit                 : "com.squareup.retrofit2:retrofit:" + project.retrofitVersion,
             retrofitGson             : "com.squareup.retrofit2:converter-gson:" + project.retrofitVersion,
             retrofitScalars          : "com.squareup.retrofit2:converter-scalars:" + project.retrofitVersion,

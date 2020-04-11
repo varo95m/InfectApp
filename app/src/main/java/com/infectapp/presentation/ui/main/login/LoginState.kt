@@ -1,4 +1,4 @@
-package com.musketeers.richsnet.presentation.ui.login
+package com.infectapp.presentation.ui.main.login
 
 import com.carmabs.ema.core.state.EmaBaseState
 import com.infectapp.domain.STRING_EMPTY
@@ -17,5 +17,6 @@ data class LoginState(
         val buttonLoginVisibility: Boolean = true,
         val buttonLoginEnable: Boolean = true,
         val user: String = STRING_EMPTY,
-        val password: String = STRING_EMPTY
+        val password: String = STRING_EMPTY,
+        val infectedByUser : String = STRING_EMPTY
 ) : EmaBaseState

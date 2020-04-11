@@ -4,12 +4,16 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.google.firebase.dynamiclinks.DynamicLink
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.infectapp.domain.model.InfectedUserModel
 import com.infectapp.domain.model.RequestTotalInfectedModel
 import com.infectapp.domain.model.RequestUserList
 import com.infectapp.domain.INT_ONE
+import com.infectapp.domain.STRING_EMPTY
 import com.infectapp.domain.model.*
 import com.infectapp.domain.usecase.GetCurrentUserUseCase
 import com.infectapp.domain.usecase.GetInfectedAtDayUseCase
@@ -38,6 +42,9 @@ class HomeViewModel(
 
     private var userLoggedInfo = InfectedUserModel()
 
+    private val descriptionLiveData = MutableLiveData<String>()
+    fun getDescriptionLiveData(): LiveData<String> = descriptionLiveData
+
     override fun onConfigureToolbars(mainToolbarsVm: MainToolbarsViewModel) {
         mainToolbarsVm.onActionUpdateToolbar {
             it.copy(
@@ -50,13 +57,20 @@ class HomeViewModel(
         if (!statePreloaded) {
             updateToAlternativeState()
             getInfectedHomeData()
+            createDynamicLink(userLoggedInfo)
+        }
+        getInfectedHomeData()
+    }
+
+    fun updateLink(createLink: String) {
+        if (createLink.isNotEmpty()) {
+            updateToAlternativeState()
             updateToNormalState {
                 copy(
-                    link = createDynamicLink(userLoggedInfo).toString()
+                    link = createLink
                 )
             }
         }
-        getInfectedHomeData()
     }
 
     private fun getInfectedHomeData() {
@@ -66,7 +80,7 @@ class HomeViewModel(
     }
 
     private fun onResponseUserList(result: MutableList<InfectedUserModel>) {
-        updateDataState {
+        updateToNormalState {
             copy(userList = result)
         }
         checkDataState { state ->
@@ -139,15 +153,32 @@ class HomeViewModel(
     }
 
 
-    private fun createDynamicLink(userLoggedInfo: InfectedUserModel): String {
-        val dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
-            .setLink(Uri.parse("https://infectapp.com/usr/" + userLoggedInfo.username))
-            .setDomainUriPrefix("https://infectgame.com/usr/")
-            // Open links with this app on Android
-            .setAndroidParameters(DynamicLink.AndroidParameters.Builder().build())
-            .buildDynamicLink()
+    private fun createDynamicLink(userLoggedInfo: InfectedUserModel) {
+//        val dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
+////            .setLink(Uri.parse("https://infectapp.com/usr/" + userLoggedInfo.username)) // TODO change in pro
+//            .setLink(Uri.parse("https://infectapp.com/usr/" + "prueba")) // TODO eliminate in pro
+//            .setDomainUriPrefix("https://infectgame.com/usr/")
+//            // Open links with this app on Android
+//            .setAndroidParameters(DynamicLink.AndroidParameters.Builder().build())
+//            .buildDynamicLink()
+//        descriptionLiveData.postValue(dynamicLink.uri.toString())
+//        https://infectgame.com/usr/?apn=com.infectapp&link=https%3A%2F%2Finfectapp.com%2Fusr%2Fprueba
 
-        return dynamicLink.uri.toString()
+        FirebaseDynamicLinks.getInstance().createDynamicLink()
+//            .setLongLink(Uri.parse("https://infectgame.com/usr/?apn=com.infectapp&link=https%3A%2F%2Finfectapp.com%2Fusr%2F" + userLoggedInfo.userName)) //TODO change in pre/pro
+            .setLongLink(Uri.parse("https://infectgame.com/usr/?apn=com.infectapp&link=https%3A%2F%2Finfectapp.com%2Fusr%2Fprueba2")) //TODO eliminate in pre/pro
+            .setDomainUriPrefix("https://infectgame.com/usr/")
+            .buildShortDynamicLink()
+            .addOnSuccessListener { result ->
+                // Short link created
+                descriptionLiveData.postValue(result.shortLink.toString())
+//                https://infectgame.com/usr/ge3K5RactdyJjZDg7
+                val previewLink = result.previewLink.toString()
+            }
+            .addOnFailureListener {
+                Log.e("DYNAMIC_LINK", "No se ha creado")
+            }
+
     }
 
     fun onActionRefresh() {
@@ -157,9 +188,11 @@ class HomeViewModel(
     fun onActionShare() {
         checkDataState {
             it.link?.let { linkUri ->
+                val textToShare =
+                    "Atrévete con este nuevo juego y ponte primero en el ranking mundial !! \n\n$linkUri"
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, linkUri)
+                    putExtra(Intent.EXTRA_TEXT, textToShare)
                     type = "text/plain"
                 }
                 navigate(MainNavigator.Navigation.ShareLink(sendIntent))

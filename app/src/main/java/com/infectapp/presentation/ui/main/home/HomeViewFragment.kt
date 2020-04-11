@@ -1,5 +1,7 @@
 package com.infectapp.presentation.ui.main.home
 
+import android.os.Bundle
+import android.view.View
 import com.carmabs.ema.core.dialog.EmaDialogProvider
 import com.carmabs.ema.core.state.EmaExtraData
 import com.infectapp.R
@@ -13,6 +15,7 @@ import com.infectapp.presentation.navigation.MainNavigator
 import com.infectapp.presentation.ui.MainToolbarsViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.kodein.di.generic.instance
+import androidx.lifecycle.Observer
 import java.util.*
 
 
@@ -22,7 +25,8 @@ import java.util.*
  * @author <a href="mailto:jorgevguerra@hotmail.com">Jorge Valiño Guerra</a>
  */
 
-class HomeViewFragment : BaseToolbarsFragment<HomeState, HomeViewModel, MainNavigator.Navigation>() {
+class HomeViewFragment :
+    BaseToolbarsFragment<HomeState, HomeViewModel, MainNavigator.Navigation>() {
 
     override val viewModelSeed: HomeViewModel by instance()
 
@@ -34,8 +38,15 @@ class HomeViewFragment : BaseToolbarsFragment<HomeState, HomeViewModel, MainNavi
 
     private val loadingDialog: EmaDialogProvider by instance(tag = KODEIN_TAG_DIALOG_LOADING)
 
-    override fun onInitializedWithToolbarsManagement(viewModel: HomeViewModel, mainToolbarViewModel: MainToolbarsViewModel) {
+
+    override fun onInitializedWithToolbarsManagement(
+        viewModel: HomeViewModel,
+        mainToolbarViewModel: MainToolbarsViewModel
+    ) {
         vm = viewModel
+        vm?.getDescriptionLiveData()?.observe(this, Observer {linkCreate ->
+            vm?.updateLink(linkCreate)
+        })
         refreshHome.setOnRefreshListener { viewModel.onActionRefresh() }
         ivHomeShare.setOnClickListener { viewModel.onActionShare() }
     }
@@ -48,9 +59,12 @@ class HomeViewFragment : BaseToolbarsFragment<HomeState, HomeViewModel, MainNavi
             tvHomeInfectedByMeToday.text = getUsersInfectedToday(usersInfected)
             setGraph(usersInfected)
         }
+        ivHomeShare.visibility =
+            data.link.let {
+                if (it != null) View.VISIBLE else View.GONE
+            }
         tvHomeInfectedAtDay.text = getString(R.string.home_infected_at_day, data.infectedAtDat)
         loadingDialog.hide()
-
     }
 
     private fun setGraph(usersInfected: List<InfectedByUserModel>) {
